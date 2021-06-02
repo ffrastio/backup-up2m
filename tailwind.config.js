@@ -15,6 +15,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
+      primary: "#008797",
 
       black: colors.black,
       white: colors.white,
@@ -70,6 +71,7 @@ module.exports = {
       ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
       pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       bounce: 'bounce 1s infinite',
+      popup: "popup 1s ease-out",
     },
     backdropBlur: (theme) => theme('blur'),
     backdropBrightness: (theme) => theme('brightness'),
@@ -469,6 +471,16 @@ module.exports = {
         '50%': {
           transform: 'none',
           animationTimingFunction: 'cubic-bezier(0,0,0.2,1)',
+        },
+      },
+      popup: {
+        "0%": {
+          opacity: "0",
+          transform: "translateY(10px)",
+        },
+        "100%": {
+          opacity: "1",
+          transform: "translateY(0)",
         },
       },
     },
