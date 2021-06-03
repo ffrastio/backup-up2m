@@ -126,7 +126,7 @@
       </div>
     </div>
     <!-- START Search Author -->
-    <div class="container mx-auto px-4 py-4 text-left flex">
+    <div class="container mx-auto px-4 py-4 text-left flex items-center justify-between">
       <input
         type="text"
         v-model="search"
@@ -207,8 +207,7 @@
 import axios from "axios";
 export default {
   name: "author",
-  components: {
-  },
+  components: {},
   data() {
     return {
       search: "",
@@ -223,9 +222,9 @@ export default {
         .catch((err) => console.log(err));
     },
   },
-  async mounted(){
-    const response = await axios.get('http://localhost:8000/api/author')
-    this.authors = response.data.data
+  async mounted() {
+    const response = await axios.get("http://localhost:8000/api/author");
+    this.authors = response.data.data;
   },
 };
 </script>
