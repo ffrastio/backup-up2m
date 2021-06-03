@@ -77,7 +77,7 @@ export default {
         sendLogin: function(e){
             e.preventDefault()
             var that = this
-            axios.post('http://localhost:8001/api/login',{
+            axios.post('https://admin-be.repo-up2m.com/api/login',{
                 email: this.email,
                 password: this.password
             })

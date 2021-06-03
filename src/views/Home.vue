@@ -37,8 +37,10 @@
       <div class="flex justify-between items-center">
         <div class="text-xl text-left font-bold py-4 px-4">Data Statistik</div>
         <div class="px-4">
+          <div v-if="!userLogin"></div>
           <button
             href="#"
+            v-else
             id="downloadPdf"
             class="bg-primary hover:bg-primary-200 text-white hover:text-white rounded-xl shadow hover:shadow-lg py-2 px-2 border"
             @click="exportToPDF(0)"
@@ -116,6 +118,11 @@ export default {
     LineChart2,
     BarChart1,
     BarChart2,
+  },
+  data(){
+    return{
+      userLogin: this.$cookies.get('uid')
+    }
   },
   methods: {
     exportToPDF() {

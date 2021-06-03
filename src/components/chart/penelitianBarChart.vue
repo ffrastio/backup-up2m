@@ -13,17 +13,18 @@ export default {
         }
         this.renderChart(
             {
-                labels: yearData,
+                // labels: yearData,
+                labels: ["2020"],
                 datasets: [
                     {
                         label: "Penelitian Mandiri",
                         backgroundColor: "rgb(174,104,104)",
-                        data: [2, 6, 6, 5]
+                        data: [5]
                     },
                     {
                         label: "Penelitian Riset Grant",
                         backgroundColor: "rgb(197,174,116)",
-                        data: [4, 5, 6, 11]
+                        data: [ 5, 6, 11]
                     },
                     {
                         label: "Penelitian Bidang Ilmu dan Pengembangan Institusi",
@@ -67,7 +68,7 @@ export default {
                 maintainAspectRatio: false,
                 title: {
                     display: true,
-                    text: "Data Pelaksanaan Penelitian Internal Per Skim",
+                    text: "Data Pelaksanaan Penelitian Per Skim",
                     fontSize: "14",
                 },
                 legend: {

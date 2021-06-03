@@ -120,7 +120,7 @@ export default {
     },
     logout: function(){
       this.$cookies.remove('uid')
-      window.location = '/login'
+      window.location = '/'
     }
   },
 };

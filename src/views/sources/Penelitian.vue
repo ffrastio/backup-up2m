@@ -46,7 +46,8 @@
               </p>
             </td>
             <td class="px-6 py-4 text-center border">
-              {{ penelitian.jumlah_anggota }}
+              <p>-</p>
+              <!-- {{ penelitian.jumlah_anggota }} -->
             </td>
           </tr>
         </tbody>
