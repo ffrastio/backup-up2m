@@ -4,9 +4,16 @@ import { Bar } from "vue-chartjs";
 export default {
     extends: Bar,
     mounted() {
+        let yearData = [];
+        let currentYear = new Date().getFullYear();
+        for(var i = currentYear;i > currentYear - 5;i--)
+        {
+            // console.log(i);
+            yearData.push(i)
+        }
         this.renderChart(
             {
-                labels: ["2017", "2018", "2019", "2020", "2021"],
+                labels: yearData,
                 datasets: [
                     {
                         label: "Penelitian Mandiri",

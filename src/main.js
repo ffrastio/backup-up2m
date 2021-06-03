@@ -27,6 +27,10 @@ library.add(
 
 Vue.config.productionTip = false;
 Vue.component("font-awesome-icon", FontAwesomeIcon);
+
+import VueCookies from 'vue-cookies'
+Vue.use(VueCookies)
+
 new Vue({
   router,
   render: (h) => h(App),

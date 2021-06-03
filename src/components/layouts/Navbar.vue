@@ -87,10 +87,17 @@
           </div>
           <div class="lg:ml-12">
             <router-link
+              v-if="!userLogin"
               :to="{ name: 'Login' }"
               class="border rounded-md border-primary items-center hover:bg-primary text-primary hover:text-white px-4 py-2"
               >Masuk
             </router-link>
+            <a href="javascript:;"
+              v-else
+              @click="logout"
+              class="border rounded-md border-primary items-center hover:bg-primary text-primary hover:text-white px-4 py-2"
+              >Logout
+            </a>
           </div>
         </ul>
       </div>
@@ -104,12 +111,17 @@ export default {
   data() {
     return {
       showMenu: false,
+      userLogin: this.$cookies.get('uid')
     };
   },
   methods: {
     toggleNavbar: function() {
       this.showMenu = !this.showMenu;
     },
+    logout: function(){
+      this.$cookies.remove('uid')
+      window.location = '/login'
+    }
   },
 };
 </script>

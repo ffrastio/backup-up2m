@@ -1,12 +1,56 @@
 <script>
 import { Line } from "vue-chartjs";
+// import axios from 'axios';
 
 export default {
     extends: Line,
+    data() {
+        return{
+            penelitianData: null,
+            lineLoad: false
+
+        }
+    },
     mounted() {
+        let yearData = [];
+        let currentYear = new Date().getFullYear();
+        for(var i = currentYear;i > currentYear - 5;i--)
+        {
+            // console.log(i);
+            yearData.push(i)
+        }
+
+        // var bgColor 
+        // backgrounnya aku busat statis aja ya 
+        // axios.get('http://localhost:8001/api/list-jurusan')
+        // .then(res => res.data)
+        // .then(function(res){
+        //     var data = res.data,
+        //         dataField = [];
+        //     // kok nggk bisa ya mass kira" knp? map nggk terdeteksi, kurang paham saya mas
+        //     data.map(function(a,key){
+        //         var numData = []
+        //         key.jurusan.map(function(j,val){
+        //             numData.push(val.penelitian_count)
+        //         })
+        //         dataField.push({
+        //             label: key.kategori,
+        //             backgroundColor: "transparent",
+        //             pointBackgroundColor: "rgb(27,64,145)",
+        //             borderColor: "rgb(27,64,145)",
+        //             data: numData
+        //         })
+        //     })
+        //     console.log(dataField)
+
+        //     this.penelitianData = dataField
+        //     this.lineLoad = true
+        // })
+
         this.renderChart(
             {
-                labels: ["2017", "2018", "2019", "2020", "2021"],
+                labels: yearData,
+                // datasets: this.penelitianData
                 datasets: [
                     {
                         label: "Teknik Informatika dan Komputer",
