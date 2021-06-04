@@ -28,7 +28,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="penelitian in filteredPenelitian" :key="penelitian.id">
+          <tr v-for="penelitian in filteredPenelitian" :key="penelitian.id" class="hover:bg-gray-100 border">
             <td class="border px-6 py-4">
               <p class="text-left">
                 {{ penelitian.judul }}
@@ -57,10 +57,17 @@
     <div class="flex container mx-auto justify-between items-center">
       <div class="px-8 py-4 text-xl">
         <p>
-          Total : <strong>{{ pagination.total_page }}</strong>
+          Total : <strong>{{ penelitians.length }}</strong>
         </p>
       </div>
-      <p>Pagination</p>
+      <div class="items-center space-x-2">
+        <button class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white">Prev</button>
+        <button class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white">1</button>
+        <button class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white">2</button>
+        <button class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white">3</button>
+        <button class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white">4</button>
+        <button class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white">Next</button>
+      </div>
     </div>
   </div>
 </template>

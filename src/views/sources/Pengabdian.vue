@@ -29,8 +29,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="pengabdian in pengabdians" :key="pengabdian.id" class="hover:bg-gray-100 border">
-            <td class="border">
+          <tr
+            v-for="pengabdian in pengabdians"
+            :key="pengabdian.id"
+            class="hover:bg-gray-100 border"
+          >
+            <td class="border px-6 py-4">
               <p class="text-left">
                 {{ pengabdian.judul }}
               </p>
@@ -47,17 +51,49 @@
               </p>
             </td>
             <td class="px-6 py-4 text-center border">
-              {{ pengabdian.jumlah_anggota }}
+              <p>-</p>
+              <!-- {{ pengabdian.jumlah_anggota }} -->
             </td>
-                
           </tr>
         </tbody>
       </table>
     </section>
     <!--END Table -->
-    <div class="flex justify-between items-center">
+    <div class="flex container mx-auto justify-between items-center">
       <div class="px-8 py-4">
         <p>Total : {{ pengabdians.length }}</p>
+      </div>
+      <div class="items-center space-x-2">
+        <button
+          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
+        >
+          Prev
+        </button>
+        <button
+          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
+        >
+          1
+        </button>
+        <button
+          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
+        >
+          2
+        </button>
+        <button
+          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
+        >
+          3
+        </button>
+        <button
+          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
+        >
+          4
+        </button>
+        <button
+          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
+        >
+          Next
+        </button>
       </div>
     </div>
   </div>
@@ -67,9 +103,7 @@
 import axios from "axios";
 export default {
   name: "Pengabdian",
-  components: {
-    
-  },
+  components: {},
   data() {
     return {
       search: "",
@@ -92,15 +126,16 @@ export default {
   //     .then((res) => (this.pengabdians = res.data.data.data))
   //     .catch((err) => console.log(err));
   // },
-  async mounted(){
-    try{
-      let response = await axios.get("http://admin-be.repo-up2m.com/api/list-pengabdian")
-      this.pengabdians = response.data.data.data
+  async mounted() {
+    try {
+      let response = await axios.get(
+        "http://admin-be.repo-up2m.com/api/list-pengabdian"
+      );
+      this.pengabdians = response.data.data.data;
+    } catch (err) {
+      console.log(err);
     }
-    catch(err) {
-      console.log(err)
-    }
-  }
+  },
 };
 </script>
 

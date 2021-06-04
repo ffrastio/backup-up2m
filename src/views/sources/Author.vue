@@ -145,7 +145,6 @@
               <th class="w-1/2 border px-4 py-2">Author</th>
               <th class="w-1/4 border px-4 py-2">Penelitian</th>
               <th class="w-1/4 border px-4 py-2">Pengabdian</th>
-              <th class="w-1/4 border px-4 py-2">Total</th>
             </tr>
           </thead>
           <tbody>
@@ -191,9 +190,7 @@
                   {{ author.pengabdian_count }}
                 </p>
               </td>
-              <td class="px-6 py-4 text-center border">
-                {{ author.count_pengabdian }}
-              </td>
+              
             </tr>
           </tbody>
         </table>
@@ -212,6 +209,7 @@ export default {
     return {
       search: "",
       authors: [],
+      total: null
     };
   },
   methods: {
@@ -223,7 +221,7 @@ export default {
     },
   },
   async mounted() {
-    const response = await axios.get("http://localhost:8000/api/author");
+    const response = await axios.get("http://admin-be.repo-up2m.com/api/author");
     this.authors = response.data.data;
   },
 };

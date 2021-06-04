@@ -53,6 +53,9 @@
         class="bg-gray-200 px-4 py-4 grid grid-cols-1 gap-2 md:grid-cols-2 mb-4 animate-popup"
       >
         <div class="bg-white text-left">
+          <Chart1 class="bg-white rounded" id="chart1" />
+        </div>
+        <!-- <div class="bg-white text-left">
           <select class="dropdown border rounded px-1 py-1 mt-2 ml-6" id="dd">
             <option value="" selected="selected">Pilih Tahun</option>
             <option value="dps1">2017</option>
@@ -61,7 +64,18 @@
             <option value="dps4">2020</option>
             <option value="dps5">2021</option>
           </select>
-          <LineChart1 class="bg-white rounded" id="chart1" />
+          <Chart2 class="bg-white rounded" id="chart2" />
+        </div> -->
+        <!-- <div class="bg-white text-left">
+          <select class="dropdown border rounded px-1 py-1 mt-2 ml-6" id="dd">
+            <option value="" selected="selected">Pilih Tahun</option>
+            <option value="dps1">2017</option>
+            <option value="dps2">2018</option>
+            <option value="dps3">2019</option>
+            <option value="dps4">2020</option>
+            <option value="dps5">2021</option>
+          </select>
+          <Chart3 class="bg-white rounded" id="chart3" />
         </div>
         <div class="bg-white text-left">
           <select class="dropdown border rounded px-1 py-1 mt-2 ml-6" id="dd">
@@ -72,30 +86,8 @@
             <option value="dps4">2020</option>
             <option value="dps5">2021</option>
           </select>
-          <LineChart2 class="bg-white rounded" id="chart2" />
-        </div>
-        <div class="bg-white text-left">
-          <select class="dropdown border rounded px-1 py-1 mt-2 ml-6" id="dd">
-            <option value="" selected="selected">Pilih Tahun</option>
-            <option value="dps1">2017</option>
-            <option value="dps2">2018</option>
-            <option value="dps3">2019</option>
-            <option value="dps4">2020</option>
-            <option value="dps5">2021</option>
-          </select>
-          <BarChart1 class="bg-white rounded" id="chart3" />
-        </div>
-        <div class="bg-white text-left">
-          <select class="dropdown border rounded px-1 py-1 mt-2 ml-6" id="dd">
-            <option value="" selected="selected">Pilih Tahun</option>
-            <option value="dps1">2017</option>
-            <option value="dps2">2018</option>
-            <option value="dps3">2019</option>
-            <option value="dps4">2020</option>
-            <option value="dps5">2021</option>
-          </select>
-          <BarChart2 class="bg-white rounded" id="chart4" />
-        </div>
+          <Chart4 class="bg-white rounded" id="chart4" />
+        </div> -->
       </div>
     </div>
     <!-- Ends Data Statistik -->
@@ -105,19 +97,19 @@
 
 <script>
 // @ is an alias to /src
-import LineChart1 from "@/components/chart/penelitianLineChart.vue";
-import LineChart2 from "@/components/chart/pengabdianLineChart.vue";
-import BarChart1 from "@/components/chart/penelitianBarChart.vue";
-import BarChart2 from "@/components/chart/pengabdianBarChart.vue";
+import Chart1 from "@/components/chart/penelitianChart1.vue";
+// import Chart2 from "@/components/chart/pengabdianChart2.vue";
+// import Chart3 from "@/components/chart/penelitianChart3.vue";
+// import Chart4 from "@/components/chart/pengabdianChart4.vue";
 import Exporter from "vue-chartjs-exporter";
 import { jsPDF } from "jspdf";
 export default {
   name: "Home",
   components: {
-    LineChart1,
-    LineChart2,
-    BarChart1,
-    BarChart2,
+    Chart1,
+    // Chart2,
+    // Chart3,
+    // Chart4,
   },
   data(){
     return{
