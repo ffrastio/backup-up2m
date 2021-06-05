@@ -55,39 +55,15 @@
         <div class="bg-white text-left">
           <Chart1 class="bg-white rounded" id="chart1" />
         </div>
-        <!-- <div class="bg-white text-left">
-          <select class="dropdown border rounded px-1 py-1 mt-2 ml-6" id="dd">
-            <option value="" selected="selected">Pilih Tahun</option>
-            <option value="dps1">2017</option>
-            <option value="dps2">2018</option>
-            <option value="dps3">2019</option>
-            <option value="dps4">2020</option>
-            <option value="dps5">2021</option>
-          </select>
+        <div class="bg-white text-left">
           <Chart2 class="bg-white rounded" id="chart2" />
-        </div> -->
-        <!-- <div class="bg-white text-left">
-          <select class="dropdown border rounded px-1 py-1 mt-2 ml-6" id="dd">
-            <option value="" selected="selected">Pilih Tahun</option>
-            <option value="dps1">2017</option>
-            <option value="dps2">2018</option>
-            <option value="dps3">2019</option>
-            <option value="dps4">2020</option>
-            <option value="dps5">2021</option>
-          </select>
+        </div>
+        <div class="bg-white text-left">
           <Chart3 class="bg-white rounded" id="chart3" />
         </div>
         <div class="bg-white text-left">
-          <select class="dropdown border rounded px-1 py-1 mt-2 ml-6" id="dd">
-            <option value="" selected="selected">Pilih Tahun</option>
-            <option value="dps1">2017</option>
-            <option value="dps2">2018</option>
-            <option value="dps3">2019</option>
-            <option value="dps4">2020</option>
-            <option value="dps5">2021</option>
-          </select>
           <Chart4 class="bg-white rounded" id="chart4" />
-        </div> -->
+        </div>
       </div>
     </div>
     <!-- Ends Data Statistik -->
@@ -98,18 +74,18 @@
 <script>
 // @ is an alias to /src
 import Chart1 from "@/components/chart/penelitianChart1.vue";
-// import Chart2 from "@/components/chart/pengabdianChart2.vue";
-// import Chart3 from "@/components/chart/penelitianChart3.vue";
-// import Chart4 from "@/components/chart/pengabdianChart4.vue";
+import Chart2 from "@/components/chart/pengabdianChart2.vue";
+import Chart3 from "@/components/chart/penelitianChart3.vue";
+import Chart4 from "@/components/chart/pengabdianChart4.vue";
 import Exporter from "vue-chartjs-exporter";
 import { jsPDF } from "jspdf";
 export default {
   name: "Home",
   components: {
     Chart1,
-    // Chart2,
-    // Chart3,
-    // Chart4,
+    Chart2,
+    Chart3,
+    Chart4,
   },
   data(){
     return{

@@ -17,21 +17,25 @@ export default {
       //   maintainAspectRatio: false,
       //   title: {
       //     display: true,
-      //     text: "Data Pelaksanaan Pengabdian Per Jurusan",
+
       //     fontSize: "14",
       //   },
       //   legend: {
-      //     position: "bottom",
+      //     position: "top",
       //   },
       //   scales: {
-      //       yAxes: [{
-      //           ticks: {
-      //               suggestedMin: 0,
-      //           }
-      //       }]
-      //   }
+      //     yAxes: [
+      //       {
+      //         ticks: {
+      //           suggestedMin: 0,
+      //         },
+      //       },
+      //     ],
+      //   },
+      // },
     },
   },
+
   mounted() {
     this.renderChart(this.chartData, this.options);
   },

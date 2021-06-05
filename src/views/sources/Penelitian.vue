@@ -24,7 +24,7 @@
             <th class="w-1/2 border px-4 py-2">Judul Penelitian</th>
             <th class="w-1/6 border px-4 py-2">Skim Penelitian</th>
             <th class="w-1/6 border px-4 py-2">Ketua Pengusul</th>
-            <th class="w-1/6 border px-4 py-2">Anggota</th>
+            <th class="w-1/6 border px-4 py-2">Tahun</th>
           </tr>
         </thead>
         <tbody>
@@ -46,7 +46,7 @@
               </p>
             </td>
             <td class="px-6 py-4 text-center border">
-              <p>-</p>
+              <p>{{penelitian.tahun}}</p>
               <!-- {{ penelitian.jumlah_anggota }} -->
             </td>
           </tr>

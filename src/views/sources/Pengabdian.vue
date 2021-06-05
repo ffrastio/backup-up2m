@@ -25,7 +25,7 @@
             <th class="w-1/2 border py-4">Judul Pengabdian</th>
             <th class="w-1/6 border py-4">Skim Pengabdian</th>
             <th class="w-1/6 border py-4">Ketua Pengusul</th>
-            <th class="w-1/6 border py-4">Anggota</th>
+            <th class="w-1/6 border py-4">Tahun</th>
           </tr>
         </thead>
         <tbody>
@@ -51,7 +51,7 @@
               </p>
             </td>
             <td class="px-6 py-4 text-center border">
-              <p>-</p>
+              <p>{{pengabdian.tahun}}</p>
               <!-- {{ pengabdian.jumlah_anggota }} -->
             </td>
           </tr>

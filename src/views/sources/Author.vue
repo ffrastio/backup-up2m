@@ -163,10 +163,9 @@
                       src="@/assets/content/content.png"
                     />
                   </div>
-                  <div class="items-center">
-                    <p class="text-center text-lg font-semibold">
-                      {{ author.gelar_depan }} {{ author.nama }}
-                      {{ author.gelar_belakang }}
+                  <div class="ml-10 items-center">
+                    <p class="text-center text-lg font-semibold break-normal" >
+                      {{`${author.gelar_depan ? author.gelar_depan:'' } ${author.nama}${author.gelar_belakang ? `, ${author.gelar_belakang}` :''}` }}
                     </p>
                     <p>
                       {{ author.jurusan }}

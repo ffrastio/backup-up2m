@@ -30,8 +30,10 @@ export default {
       //           }
       //       }]
       //   }
+      // },
     },
   },
+
   mounted() {
     this.renderChart(this.chartData, this.options);
   },

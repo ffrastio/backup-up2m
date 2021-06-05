@@ -1,17 +1,30 @@
 <template>
   <div>
-    <select
-      class="dropdown border rounded px-1 py-1 mt-2 ml-6"
-      
-      v-model="year"
-    >
-      <option value="2017" selected="selected">2017</option>
-      <option value="2018">2018</option>
-      <option value="2019">2019</option>
-      <option value="2020">2020</option>
-      <option value="2021">2021</option>
-    </select>
-    <BarChart :chart-data="datacollection" />
+    <div>
+      <div>
+        <select
+          name="LeaveType"
+          @change="onChange($event)"
+          class="dropdown border rounded px-1 py-1 mt-2 ml-6"
+          v-model="year"
+        >
+          <option v-for="getYear in getYears" :key="getYear.id">{{
+            getYear
+          }}</option>
+        </select>
+      </div>
+      <div>
+        <h3 class="text-center">
+          Data Pelaksanaan Penelitian Per Jurusan {{ year }}
+        </h3>
+      </div>
+    </div>
+    <div>
+      <BarChart :chart-data="datacollection" />
+    </div>
+    <!-- <div>
+      Data tidak ada
+    </div> -->
   </div>
 </template>
 
@@ -24,19 +37,34 @@ export default {
   },
   data() {
     return {
-      datacollection: null,
+      datacollection: [],
       loaded: false,
       jurusan: [],
       penelitian: [],
-      year: '2017',
+      year: new Date().getFullYear(),
+      getYears: [],
     };
   },
   async mounted() {
     this.fillData();
-    await this.getPenelitian();
+    await this.getPenelitian(this.year);
+    this.getDataTahunan();
   },
   methods: {
-    
+    getDataTahunan() {
+      var lampau = [];
+      var date = new Date(2017, 1, 1);
+      var now = new Date();
+      for (var d = date; d <= now; d.setFullYear(d.getFullYear() + 1)) {
+        lampau.push(new Date(d).getFullYear());
+      }
+      this.getYears = lampau;
+    },
+    // combo box
+    onChange: async function onChange(event) {
+      await this.getPenelitian(event.target.value);
+      console.log(event.target.value);
+    },
     fillData() {
       this.datacollection = {
         labels: this.jurusan,
@@ -57,25 +85,18 @@ export default {
         ],
       };
     },
-    getPenelitian() {
-      var url = "http://localhost:8001/api/penelitian?tahun=" + this.year;
-      // var headers = {
-      //   headers: {
-      //   }
-      // }
+    getPenelitian(year) {
+      var url = "http://admin-be.repo-up2m.com/api/penelitian?tahun=" + year;
       axios
         .get(url)
         .then((x) => {
-          // console.log(x.data.data);
           var results = x.data.data;
           var jurusan = [];
           var penelitian = [];
-          for (var i = 6; i >= 0; i--) {
-            var t = parseInt(results[i].penelitian_count);
-            var j = results[i].jurusan;
-            penelitian.push(t);
-            jurusan.push(j);
-          }
+          results.map((obj) => {
+            penelitian.push(parseInt(obj.penelitian_count));
+            jurusan.push(obj.jurusan);
+          });
           this.jurusan = jurusan.map(function(x) {
             return x;
           });

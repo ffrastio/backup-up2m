@@ -1,88 +1,118 @@
-<script>
-import { Bar } from "vue-chartjs";
+<template>
+  <div>
+    <div>
+      <div>
+        <select
+          name="LeaveType"
+          @change="onChange($event)"
+          class="dropdown border rounded px-1 py-1 mt-2 ml-6"
+          v-model="year"
+        >
+          <option v-for="getYear in getYears" :key="getYear.id">{{
+            getYear
+          }}</option>
+        </select>
+      </div>
+      <div>
+        <h3 class="text-center">
+          Data Pelaksanaan Pengabdian Per Jurusan {{ year }}
+        </h3>
+      </div>
+    </div>
+    <BarChart :chart-data="datacollection" />
+  </div>
+</template>
 
+<script>
+import BarChart from "./PengabdianChart2";
+import axios from "axios";
 export default {
-  extends: Bar,
-  mounted() {
-    this.renderChart(
-      {
-        labels: ["2019"],
+  components: {
+    BarChart,
+  },
+  data() {
+    return {
+      datacollection: null,
+      loaded: false,
+      jurusan: [],
+      pengabdian: [],
+      year: new Date().getFullYear(),
+      getYears: [],
+    };
+  },
+  async mounted() {
+    this.fillData();
+    await this.getPengabdian();
+    this.getDataTahunan();
+  },
+  methods: {
+    getDataTahunan() {
+      var lampau = [];
+      var date = new Date(2017, 1, 1);
+      var now = new Date();
+      for (var d = date; d <= now; d.setFullYear(d.getFullYear() + 1)) {
+        lampau.push(new Date(d).getFullYear());
+      }
+      this.getYears = lampau;
+    },
+    // combo box
+    onChange: async function onChange(event) {
+      await this.getPengabdian(event.target.value);
+      console.log(event.target.value);
+    },
+    fillData() {
+      this.datacollection = {
+        labels: this.jurusan,
         datasets: [
           {
-            label: "Teknik Informatika dan Komputer",
-            backgroundColor: "rgb(27,64,145)",
-            pointBackgroundColor: "rgb(27,64,145)",
-            borderColor: "rgb(27,64,145)",
-            data: [6, 5],
-          },
-          {
-            label: "Teknik Mesin",
-            backgroundColor: "rgb(52,157,204)",
-            pointBackgroundColor: "rgb(52,157,204)",
-            borderColor: "rgb(52,157,204)",
-            data: [11],
-          },
-          {
-            label: "Teknik Sipil",
-            backgroundColor: "rgb(151,98,44)",
-            pointBackgroundColor: "rgb(151,98,44)",
-            borderColor: "rgb(151,98,44)",
-            data: [7],
-          },
-          {
-            label: "Teknik Elektro",
-            backgroundColor: "rgb(242,113,9)",
-            pointBackgroundColor: "rgb(242,113,9)",
-            borderColor: "rgb(242,113,9)",
-            data: [9],
-          },
-          {
-            label: "Teknik Grafika dan Penerbitan",
-            backgroundColor: "rgb(206,203,48)",
-            pointBackgroundColor: "rgb(206,203,48)",
-            borderColor: "rgb(206,203,48)",
-            data: [5],
-          },
-          {
-            label: "Administrasi dan Niaga",
-            backgroundColor: "rgb(0,135,151)",
-            pointBackgroundColor: "rgb(0,135,151)",
-            borderColor: "rgb(0,135,151)",
-            data: [4, 6],
-          },
-          {
-            label: "Akutansi",
-            backgroundColor: "rgb(204,57,55)",
-            pointBackgroundColor: "rgb(204,57,55)",
-            borderColor: "rgb(204,57,55)",
-            data: [13],
-          },
-          {
-            label: "P3M",
-            backgroundColor: "rgb(132,94,194)",
-            pointBackgroundColor: "rgb(132,94,194)",
-            borderColor: "rgb(132,94,194)",
-            data: [2, 0],
+            label: this.year,
+            backgroundColor: [
+              "rgb(174,104,104)",
+              "rgb(197,174,116)",
+              "rgb(151,174,102)",
+              "rgb(106,191,186)",
+              "rgb(122,152,94)",
+              "rgb(128,110,168)",
+              "rgb(202,52,205)",
+              "rgb(19,57,115)",
+            ],
+            data: this.pengabdian,
           },
         ],
-      },
-      {
-        responsive: true,
-        maintainAspectRatio: false,
-        title: {
-          display: true,
-          text: "Data Pelaksanaan Pengabdian Per Jurusan",
-          fontSize: 14,
-        },
-        legend: {
-          position: "bottom",
-          // labels: {
-          //     // fontFamily : 'Poppins',
-          //     usePointStyle: true,
-          // }
-        },
-      }
-    );
+      };
+    },
+    getPengabdian(year) {
+      var url = "http://admin-be.repo-up2m.com/api/pengabdian?tahun=" + year;
+      // var headers = {
+      //   headers: {
+      //   }
+      // }
+      axios
+        .get(url)
+        .then((x) => {
+          // console.log(x.data.data);
+          var results = x.data.data;
+          var jurusan = [];
+          var pengabdian = [];
+          results.map((obj) => {
+            pengabdian.push(parseInt(obj.pengabdian_count));
+            jurusan.push(obj.jurusan);
+          });
+          this.jurusan = jurusan.map(function(x) {
+            return x;
+          });
+          this.pengabdian = pengabdian.map(function(y) {
+            return y;
+          });
+          // console.log(this.jurusan);
+          this.fillData();
+        })
+        .catch((x) => {
+          console.log(x);
+        });
+    },
   },
 };
 </script>
+
+<style lang="scss" scoped></style>
