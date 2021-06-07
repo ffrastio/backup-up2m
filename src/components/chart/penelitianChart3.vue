@@ -19,7 +19,15 @@
         </h3>
       </div>
     </div>
-    <BarChart :chart-data="datacollection" />
+    <div v-if="penelitian.length <= 0" class="text-center mt-12">
+      <p class="font-bold text-xl">
+        Data Belum Tersedia <br />
+        Silahkan Pilih Tahun yang tersedia
+      </p>
+    </div>
+    <div v-else>
+      <BarChart :chart-data="datacollection" />
+    </div>
   </div>
 </template>
 
@@ -36,13 +44,13 @@ export default {
       loaded: false,
       skim: [],
       penelitian: [],
-      year: new Date().getFullYear(),
+      year: "2017",
       getYears: [],
     };
   },
   async mounted() {
     this.fillData();
-    await this.getPenelitian();
+    await this.getPenelitian(this.year);
     this.getDataTahunan();
   },
   methods: {
@@ -58,7 +66,6 @@ export default {
     // combo box
     onChange: async function onChange(event) {
       await this.getPenelitian(event.target.value);
-      console.log(event.target.value);
     },
     fillData() {
       this.datacollection = {
@@ -95,12 +102,10 @@ export default {
           var results = x.data.data;
           var skim = [];
           var penelitian = [];
-          for (var i = 9; i >= 0; i--) {
-            var t = parseInt(results[i].skim_count);
-            var j = results[i].skim_penelitian;
-            penelitian.push(t);
-            skim.push(j);
-          }
+          results.map((obj) => {
+            penelitian.push(parseInt(obj.skim_count));
+            skim.push(obj.skim_penelitian);
+          });
           this.skim = skim.map(function(x) {
             return x;
           });

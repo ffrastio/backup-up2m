@@ -19,12 +19,10 @@
         </h3>
       </div>
     </div>
-    <div>
+      <div v-if="penelitian.length <= 0" class="text-center mt-12"><p class="font-bold text-xl">Data Belum Tersedia <br> Silahkan Pilih Tahun yang tersedia</p></div>
+      <div v-else>
       <BarChart :chart-data="datacollection" />
-    </div>
-    <!-- <div>
-      Data tidak ada
-    </div> -->
+      </div>
   </div>
 </template>
 
@@ -37,11 +35,11 @@ export default {
   },
   data() {
     return {
-      datacollection: [],
+      datacollection: null,
       loaded: false,
       jurusan: [],
       penelitian: [],
-      year: new Date().getFullYear(),
+      year: "2017",
       getYears: [],
     };
   },
@@ -63,7 +61,6 @@ export default {
     // combo box
     onChange: async function onChange(event) {
       await this.getPenelitian(event.target.value);
-      console.log(event.target.value);
     },
     fillData() {
       this.datacollection = {

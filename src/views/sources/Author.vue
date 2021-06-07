@@ -1,7 +1,7 @@
 <template>
   <div id="author">
     <div class="border-b">
-      <div class="container flex px-4">
+      <div class="container mx-auto flex px-4 break-normal">
         <!-- START Author -->
         <div class="flex mx-auto items-center">
           <div class="flex items-center ">
@@ -14,94 +14,23 @@
         </div>
         <!-- END Author -->
         <!-- START Jurusan Kategori dekstop -->
-        <div class="hidden md:flex items-center mx-auto ml-4">
+        <div
+          class="hidden md:flex mx-auto "
+          v-for="jurusan in jurusans"
+          :key="jurusan.id"
+        >
           <div
-            class="block items-center justify-items-center border transform duration-500 transition hover:scale-110 "
+            class="block items-center w-36 justify-items-center transform duration-500 transition hover:scale-110 "
           >
             <img
               src="@/assets/content/content.png"
               alt="logoPnj"
-              class="object-cover mx-auto mt-4"
+              class="object-cover mt-4 mx-auto"
               style="height: 50px"
             />
-            <div class="px-4 mb-2"><p>Informatika & Komputer</p></div>
-          </div>
-          <div
-            class="block items-center justify-items-center border transform duration-500 transition hover:scale-110"
-          >
-            <img
-              src="@/assets/content/content.png"
-              alt="logoPnj"
-              class="object-cover mx-auto mt-4"
-              style="height: 50px"
-            />
-            <div class="px-4 mb-2"><p>Teknik Mesin</p></div>
-          </div>
-          <div
-            class="block items-center justify-items-center border transform duration-500 transition hover:scale-110"
-          >
-            <img
-              src="@/assets/content/content.png"
-              alt="logoPnj"
-              class="object-cover mx-auto mt-4"
-              style="height: 50px"
-            />
-            <div class="px-4 mb-2"><p>Administrasi Niaga</p></div>
-          </div>
-          <div
-            class="block items-center justify-items-center border transform duration-500 transition hover:scale-110"
-          >
-            <img
-              src="@/assets/content/content.png"
-              alt="logoPnj"
-              class="object-cover mx-auto mt-4"
-              style="height: 50px"
-            />
-            <div class="px-4 mb-2"><p>Teknik Sipil</p></div>
-          </div>
-          <div
-            class="block items-center justify-items-center border transform duration-500 transition hover:scale-110"
-          >
-            <img
-              src="@/assets/content/content.png"
-              alt="logoPnj"
-              class="object-cover mx-auto mt-4"
-              style="height: 50px"
-            />
-            <div class="px-4 mb-2"><p>Akutansi</p></div>
-          </div>
-          <div
-            class="block items-center justify-items-center border transform duration-500 transition hover:scale-110"
-          >
-            <img
-              src="@/assets/content/content.png"
-              alt="logoPnj"
-              class="object-cover mx-auto mt-4"
-              style="height: 50px"
-            />
-            <div class="px-4 mb-2"><p>Grafika & Penerbitan</p></div>
-          </div>
-          <div
-            class="block items-center justify-items-center border transform duration-500 transition hover:scale-110"
-          >
-            <img
-              src="@/assets/content/content.png"
-              alt="logoPnj"
-              class="object-cover mx-auto mt-4"
-              style="height: 50px"
-            />
-            <div class="px-4 mb-2"><p>Pascasarjana</p></div>
-          </div>
-          <div
-            class="block items-center justify-items-center border transform duration-500 transition hover:scale-110"
-          >
-            <img
-              src="@/assets/content/content.png"
-              alt="logoPnj"
-              class="object-cover mx-auto mt-4"
-              style="height: 50px"
-            />
-            <div class="px-4 mb-2"><p>Teknik Elektro</p></div>
+            <div class="mb-2">
+              <p>{{ jurusan.nama_jurusan }}</p>
+            </div>
           </div>
         </div>
         <!-- END Jurusan Kategori Dekstop -->
@@ -126,13 +55,14 @@
       </div>
     </div>
     <!-- START Search Author -->
-    <div class="container mx-auto px-4 py-4 text-left flex items-center justify-between">
+    <div
+      class="container mx-auto px-4 py-4 text-left flex items-center justify-between"
+    >
       <input
         type="text"
-        v-model="search"
+        v-model="searchAuthor"
         placeholder="Search Author . . ."
         class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-full text-sm focus:outline-none"
-        @keyup="searchAuthor"
       />
     </div>
     <!-- END Search Author -->
@@ -148,7 +78,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="author in authors" :key="author.id">
+            <tr v-for="author in filteredAuthor" :key="author.id">
               <td class="border px-6 py-4">
                 <div class="flex items-center justify-center">
                   <div class="flex w-20 h-20">
@@ -164,8 +94,16 @@
                     />
                   </div>
                   <div class="ml-10 items-center">
-                    <p class="text-center text-lg font-semibold break-normal" >
-                      {{`${author.gelar_depan ? author.gelar_depan:'' } ${author.nama}${author.gelar_belakang ? `, ${author.gelar_belakang}` :''}` }}
+                    <p class="text-center text-lg font-semibold break-normal">
+                      {{
+                        `${author.gelar_depan ? author.gelar_depan : ""} ${
+                          author.nama
+                        }${
+                          author.gelar_belakang
+                            ? `, ${author.gelar_belakang}`
+                            : ""
+                        }`
+                      }}
                     </p>
                     <p>
                       {{ author.jurusan }}
@@ -189,7 +127,6 @@
                   {{ author.pengabdian_count }}
                 </p>
               </td>
-              
             </tr>
           </tbody>
         </table>
@@ -206,22 +143,52 @@ export default {
   components: {},
   data() {
     return {
-      search: "",
+      searchAuthor: "",
       authors: [],
-      total: null
+      jurusans: [],
+      total: null,
     };
   },
   methods: {
-    searchAuthor() {
-      axios
-        .get("http://admin-be.repo-up2m.com/api/list-author?q=" + this.search)
-        .then((res) => (this.authors = res.data.data.data))
-        .catch((err) => console.log(err));
-    },
+    // searchAuthor() {
+    //   axios
+    //     .get("http://admin-be.repo-up2m.com/api/list-author?q=" + this.search)
+    //     .then((res) => (this.authors = res.data.data.data))
+    //     .catch((err) => console.log(err));
+    // },
   },
   async mounted() {
-    const response = await axios.get("http://admin-be.repo-up2m.com/api/author");
+    var jurusan = "http://admin-be.repo-up2m.com/api/list-jurusan";
+    axios.get(jurusan).then((x) => {
+      this.jurusans = x.data.data;
+    });
+    const response = await axios.get(
+      "http://admin-be.repo-up2m.com/api/author"
+    );
     this.authors = response.data.data;
+  },
+  computed: {
+    filteredAuthor: function() {
+      var author = this.authors;
+      var searchAuthor = this.searchAuthor;
+
+      if (!searchAuthor) {
+        return author;
+      }
+
+      searchAuthor = searchAuthor.trim().toLowerCase();
+
+      author = author.filter(function(item) {
+        if (item.nama.toLowerCase().indexOf(searchAuthor) !== -1) {
+          return item;
+        }
+        {
+          return item;
+        }
+      });
+      console.log(searchAuthor);
+      return author;
+    },
   },
 };
 </script>
