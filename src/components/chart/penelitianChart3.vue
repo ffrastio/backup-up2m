@@ -1,7 +1,15 @@
 <template>
   <div>
     <div>
-      <div>
+      <!-- START Judul Grafik -->
+      <div class=" mt-2 text-md font-semibold">
+        <h3 class="text-center">
+          Data Pelaksanaan Penelitian <br> Per Skim {{ year }}
+        </h3>
+      </div>
+      <!-- END Judul Grafik -->
+      <!-- START Kategori Tahun -->
+      <div class="mb-4">
         <select
           name="LeaveType"
           @change="onChange($event)"
@@ -13,11 +21,7 @@
           }}</option>
         </select>
       </div>
-      <div>
-        <h3 class="text-center">
-          Data Pelaksanaan Penelitian Per skim {{ year }}
-        </h3>
-      </div>
+      <!-- END Kategori Tahun -->
     </div>
     <div v-if="penelitian.length <= 0" class="text-center mt-12">
       <p class="font-bold text-xl">
@@ -74,14 +78,16 @@ export default {
           {
             label: this.year,
             backgroundColor: [
-              "rgb(174,104,104)",
-              "rgb(197,174,116)",
-              "rgb(151,174,102)",
-              "rgb(106,191,186)",
-              "rgb(122,152,94)",
-              "rgb(128,110,168)",
-              "rgb(202,52,205)",
-              "rgb(19,57,115)",
+              "rgb(69,181,178)",
+              "rgb(140,194,33)",
+              "rgb(227,218,32)",
+              "rgb(239,117,19)",
+              "rgb(173,161,126)",
+              "rgb(139,71,58)",
+              "rgb(228,148,187)",
+              "rgb(206,66,38)",
+              "rgb(170,194,113)",
+              "rgb(170,161,161)",
             ],
             data: this.penelitian,
           },

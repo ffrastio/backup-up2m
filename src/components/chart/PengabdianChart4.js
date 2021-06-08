@@ -11,28 +11,36 @@ export default {
     },
     options: {
       type: Object,
-      default: null,
-      // {
-      //   responsive: true,
-      //   maintainAspectRatio: false,
-      //   title: {
-      //     display: true,
-
-      //     fontSize: "14",
-      //   },
-      //   legend: {
-      //     position: "top",
-      //   },
-      //   scales: {
-      //     yAxes: [
-      //       {
-      //         ticks: {
-      //           suggestedMin: 0,
-      //         },
-      //       },
-      //     ],
-      //   },
-      // },
+      default: {
+        responsive: true,
+        maintainAspectRatio: false,
+        layout: {
+          padding: {
+              left: 50,
+              right: 50,
+              top: 0,
+              bottom: 40
+          }
+      },
+        title: {
+          display: false,
+          text: "Data Pelaksanaan Pengabdian Per Jurusan",
+          fontSize: "14",
+        },
+        legend: {
+          display: false,
+          position: "bottom",
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                suggestedMin: 0,
+              },
+            },
+          ],
+        },
+      },
     },
   },
 

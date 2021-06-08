@@ -1,7 +1,15 @@
 <template>
   <div>
     <div>
-      <div>
+      <!-- START Judul Grafik -->
+      <div class=" mt-2 text-md font-semibold">
+        <h3 class="text-center">
+          Data Pelaksanaan Penelitian <br> Per Jurusan {{ year }}
+        </h3>
+      </div>
+      <!-- END Judul Grafik -->
+      <!-- START Kategori Tahun -->
+      <div class="mb-4">
         <select
           name="LeaveType"
           @change="onChange($event)"
@@ -13,16 +21,19 @@
           }}</option>
         </select>
       </div>
-      <div>
-        <h3 class="text-center">
-          Data Pelaksanaan Penelitian Per Jurusan {{ year }}
-        </h3>
-      </div>
+      <!-- END Kategori Tahun -->
     </div>
-      <div v-if="penelitian.length <= 0" class="text-center mt-12"><p class="font-bold text-xl">Data Belum Tersedia <br> Silahkan Pilih Tahun yang tersedia</p></div>
-      <div v-else>
+    <!-- START Grafik -->
+    <div v-if="penelitian.length <= 0" class="text-center mt-12">
+      <p class="font-bold text-xl">
+        Data Belum Tersedia <br />
+        Silahkan Pilih Tahun yang tersedia
+      </p>
+    </div>
+    <div v-else>
       <BarChart :chart-data="datacollection" />
-      </div>
+    </div>
+    <!-- END Grafik -->
   </div>
 </template>
 
@@ -69,13 +80,14 @@ export default {
           {
             label: this.year,
             backgroundColor: [
-              "rgb(174,104,104)",
-              "rgb(197,174,116)",
-              "rgb(151,174,102)",
-              "rgb(106,191,186)",
-              "rgb(122,152,94)",
-              "rgb(128,110,168)",
-              "rgb(202,52,205)",
+              "rgb(255,134,127)",
+              "rgb(209,91,39)",
+              "rgb(195,170,239)",
+              "rgb(224,210,109)",
+              "rgb(139,160,65)",
+              "rgb(89,89,89)",
+              "rgb(128,213,207)",
+              "rgb(69,147,172)",
             ],
             data: this.penelitian,
           },
