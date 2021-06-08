@@ -38,17 +38,20 @@
         <div class="items-center justify-center overflow-x-auto lg:hidden">
           <select
             class="dropdown border-2 rounded-xl border-primary px-1 py-1 mt-3 ml-6 w-40"
-            id="dd"
+            v-model="selectJurusan"
           >
-            <option value="" selected="selected">Semua Jurusan</option>
-            <option value="dps3">Administrasi Niaga</option>
-            <option value="dps4">Akutansi</option>
-            <option value="dps2">Teknik Elektro</option>
-            <option value="dps5">Teknik Grafika & Penerbitan</option>
-            <option value="dps1">Teknik Informatika & Komputer</option>
-            <option value="dps5">Teknik Mesin</option>
-            <option value="dps5">Pascasarjana</option>
-            <option value="dps5">Teknik Sipil</option>
+            <option value="All" selected="selected">Semua Jurusan</option>
+            <option value="ADMINISTRASI NIAGA">Administrasi Niaga</option>
+            <option value="AKUTANSI">Akutansi</option>
+            <option value="TEKNIK ELEKTRO">Teknik Elektro</option>
+            <option value="TEKNIK GRAFIKA DAN PENERBITAN"
+              >Teknik Grafika & Penerbitan</option
+            >
+            <option value="TEKNIK INFORMATIKA DAN KOMPUTER"
+              >Teknik Informatika & Komputer</option
+            >
+            <option value="TEKNIK MESIN">Teknik Mesin</option>
+            <option value="TEKNIK SIPIL">Teknik Sipil</option>
           </select>
         </div>
         <!-- END Jurusan Kategori Mobile -->
@@ -147,6 +150,7 @@ export default {
       authors: [],
       jurusans: [],
       total: null,
+      selectJurusan: "All",
     };
   },
   methods: {
