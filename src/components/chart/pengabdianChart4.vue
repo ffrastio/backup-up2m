@@ -103,7 +103,7 @@ export default {
           var skim = [];
           var pengabdian = [];
           results.map((obj) => {
-            pengabdian.push(parseInt(obj.skim_count));
+            pengabdian.push(parseInt(obj.pengabdian_count));
             skim.push(obj.skim_pengabdian);
           });
           this.skim = skim.map(function(x) {

@@ -109,7 +109,7 @@ export default {
           var skim = [];
           var penelitian = [];
           results.map((obj) => {
-            penelitian.push(parseInt(obj.skim_count));
+            penelitian.push(parseInt(obj.penelitian_count));
             skim.push(obj.skim_penelitian);
           });
           this.skim = skim.map(function(x) {

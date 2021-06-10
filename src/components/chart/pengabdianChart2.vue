@@ -86,6 +86,7 @@ export default {
               "rgb(89,89,89)",
               "rgb(128,213,207)",
               "rgb(69,147,172)",
+              "rgb(239,117,19)",
             ],
             data: this.pengabdian,
           },
@@ -93,7 +94,7 @@ export default {
       };
     },
     getPengabdian(year) {
-      var url = "http://admin-be.repo-up2m.com/api/pengabdian?tahun=" + year;
+      var url = "http://admin-be.repo-up2m.com/api/jurusan-pengabdian?tahun=" + year;
       // var headers = {
       //   headers: {
       //   }

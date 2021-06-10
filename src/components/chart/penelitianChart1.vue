@@ -95,7 +95,7 @@ export default {
       };
     },
     getPenelitian(year) {
-      var url = "http://admin-be.repo-up2m.com/api/penelitian?tahun=" + year;
+      var url = "http://admin-be.repo-up2m.com/api/jurusan-penelitian?tahun=" + year;
       axios
         .get(url)
         .then((x) => {

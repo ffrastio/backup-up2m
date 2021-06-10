@@ -36,7 +36,7 @@
         <!-- END Jurusan Kategori Dekstop -->
         <!-- START Jurusan Kategori Mobile -->
         <div class="items-center justify-center overflow-x-auto lg:hidden">
-          <select
+          <!-- <select
             class="dropdown border-2 rounded-xl border-primary px-1 py-1 mt-3 ml-6 w-40"
             v-model="selectJurusan"
           >
@@ -52,7 +52,7 @@
             >
             <option value="TEKNIK MESIN">Teknik Mesin</option>
             <option value="TEKNIK SIPIL">Teknik Sipil</option>
-          </select>
+          </select> -->
         </div>
         <!-- END Jurusan Kategori Mobile -->
       </div>
@@ -81,7 +81,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="author in filteredAuthor" :key="author.id">
+            <tr
+              v-for="author in filteredAuthor"
+              :key="author.id"
+              :currentPage="currentPage"
+              :pageSize="pageSize"
+            >
               <td class="border px-6 py-4">
                 <div class="flex items-center justify-center">
                   <div class="flex w-20 h-20">
@@ -149,8 +154,9 @@ export default {
       searchAuthor: "",
       authors: [],
       jurusans: [],
-      total: null,
-      selectJurusan: "All",
+      currentPage: 0,
+      pageSize: 10,
+      visibleAuthors: [],
     };
   },
   methods: {
@@ -160,6 +166,10 @@ export default {
     //     .then((res) => (this.authors = res.data.data.data))
     //     .catch((err) => console.log(err));
     // },
+    updatePages(pageNumber) {
+      this.currentPage = pageNumber;
+      this.updateVisibleAuthors;
+    },
   },
   async mounted() {
     var jurusan = "http://admin-be.repo-up2m.com/api/list-jurusan";
@@ -172,26 +182,10 @@ export default {
     this.authors = response.data.data;
   },
   computed: {
-    filteredAuthor: function() {
-      var author = this.authors;
-      var searchAuthor = this.searchAuthor;
-
-      if (!searchAuthor) {
-        return author;
-      }
-
-      searchAuthor = searchAuthor.trim().toLowerCase();
-
-      author = author.filter(function(item) {
-        if (item.nama.toLowerCase().indexOf(searchAuthor) !== -1) {
-          return item;
-        }
-        {
-          return item;
-        }
-      });
-      console.log(searchAuthor);
-      return author;
+    filteredAuthor() {
+      return this.authors.filter((author) =>
+        author.nama.toLowerCase().includes(this.searchAuthor.toLowerCase())
+      );
     },
   },
 };
