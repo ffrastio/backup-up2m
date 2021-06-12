@@ -36,7 +36,7 @@
         <!-- END Jurusan Kategori Dekstop -->
         <!-- START Jurusan Kategori Mobile -->
         <div class="items-center justify-center overflow-x-auto lg:hidden">
-          <!-- <select
+          <select
             class="dropdown border-2 rounded-xl border-primary px-1 py-1 mt-3 ml-6 w-40"
             v-model="selectJurusan"
           >
@@ -52,7 +52,7 @@
             >
             <option value="TEKNIK MESIN">Teknik Mesin</option>
             <option value="TEKNIK SIPIL">Teknik Sipil</option>
-          </select> -->
+          </select>
         </div>
         <!-- END Jurusan Kategori Mobile -->
       </div>
@@ -82,7 +82,7 @@
           </thead>
           <tbody>
             <tr
-              v-for="author in filteredAuthor"
+              v-for="author in authors"
               :key="author.id"
               :currentPage="currentPage"
               :pageSize="pageSize"
@@ -157,6 +157,7 @@ export default {
       currentPage: 0,
       pageSize: 10,
       visibleAuthors: [],
+      selectJurusan: "",
     };
   },
   methods: {
