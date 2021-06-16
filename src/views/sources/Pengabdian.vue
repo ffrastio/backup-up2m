@@ -8,10 +8,9 @@
         <div class="py-4 text-left mx-auto">
           <input
             type="text"
-            v-model="search"
+            v-model="searchPengabdian"
             placeholder="Search Author . . ."
             class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-md text-sm focus:outline-none lg:w-96 w-full"
-            @keyup="searchPengabdian"
           />
         </div>
       </div>
@@ -30,7 +29,7 @@
         </thead>
         <tbody>
           <tr
-            v-for="pengabdian in pengabdians"
+            v-for="pengabdian in filteredPengabdian"
             :key="pengabdian.id"
             class="hover:bg-gray-100 border"
           >
@@ -106,36 +105,46 @@ export default {
   components: {},
   data() {
     return {
-      search: "",
+      searchPengabdian: "",
       pengabdians: [],
     };
   },
-  methods: {
-    searchPengabdian() {
-      axios
-        .get(
-          "http://admin-be.repo-up2m.com/api/list-pengabdian?q=" + this.search
-        )
-        .then((res) => (this.pengabdians = res.data.data.data))
-        .catch((err) => console.log(err));
-    },
-  },
-  // mounted() {
-  //   axios
-  //     .get("http://admin-be.repo-up2m.com/api/list-pengabdian")
-  //     .then((res) => (this.pengabdians = res.data.data.data))
-  //     .catch((err) => console.log(err));
-  // },
   async mounted() {
     try {
       let response = await axios.get(
-        "http://admin-be.repo-up2m.com/api/list-pengabdian"
+        "http://localhost:8001/api/list-pengabdian"
       );
       this.pengabdians = response.data.data.data;
     } catch (err) {
       console.log(err);
     }
   },
+  computed: {
+    filteredPengabdian: function() {
+      var pengabdian = this.pengabdians;
+      var searchPengabdian = this.searchPengabdian;
+
+      if (!searchPengabdian) {
+        return pengabdian;
+      }
+
+      searchPengabdian = searchPengabdian.trim().toLowerCase();
+
+      pengabdian = pengabdian.filter(function(item) {
+        if (item.judul.toLowerCase().indexOf(searchPengabdian) !== -1) {
+          return item;
+        }
+        if (
+          item.nama_ketua_pengabdian.toLowerCase().indexOf(searchPengabdian) !==
+          -1
+        ) {
+          return item;
+        }
+      });
+
+      return pengabdian;
+    },
+  }
 };
 </script>
 

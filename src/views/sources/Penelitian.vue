@@ -15,7 +15,15 @@
         </div>
       </div>
     </div>
-
+    <!-- START Kategori Test -->
+    <!-- <section v-for="penelitian in penelitians" :key="penelitian.id">
+      <div class="container mx-auto flex items-center flex-row ">
+        <input type="checkbox" /><label for="#" class="ml-4">{{
+          penelitian.skim_penelitian
+        }}</label>
+      </div>
+    </section> -->
+    <!-- END KATEGORI -->
     <!--START Table -->
     <section id="table" class="overflow-x-auto container mx-auto w-full py-4">
       <table class="table-responsive">
@@ -28,7 +36,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="penelitian in filteredPenelitian" :key="penelitian.id" class="hover:bg-gray-100 border">
+          <tr
+            v-for="penelitian in filteredPenelitian"
+            :key="penelitian.id"
+            class="hover:bg-gray-100 border"
+          >
             <td class="border px-6 py-4">
               <p class="text-left">
                 {{ penelitian.judul }}
@@ -46,7 +58,7 @@
               </p>
             </td>
             <td class="px-6 py-4 text-center border">
-              <p>{{penelitian.tahun}}</p>
+              <p>{{ penelitian.tahun }}</p>
               <!-- {{ penelitian.jumlah_anggota }} -->
             </td>
           </tr>
@@ -61,12 +73,36 @@
         </p>
       </div>
       <div class="items-center space-x-2">
-        <button class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white">Prev</button>
-        <button class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white">1</button>
-        <button class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white">2</button>
-        <button class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white">3</button>
-        <button class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white">4</button>
-        <button class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white">Next</button>
+        <button
+          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
+        >
+          Prev
+        </button>
+        <button
+          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
+        >
+          1
+        </button>
+        <button
+          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
+        >
+          2
+        </button>
+        <button
+          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
+        >
+          3
+        </button>
+        <button
+          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
+        >
+          4
+        </button>
+        <button
+          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
+        >
+          Next
+        </button>
       </div>
     </div>
   </div>
@@ -81,7 +117,6 @@ export default {
     return {
       searchPenelitian: "",
       penelitians: [],
-      pagination: {},
     };
   },
   created() {
@@ -90,21 +125,9 @@ export default {
   methods: {
     viewPenelitian() {
       axios
-        .get("https://admin-be.repo-up2m.com/api/list-penelitian")
+        .get("http://localhost:8001/api/list-penelitian?page=1")
         .then((res) => {
           this.penelitians = res.data.data.data;
-        //   this.pagination = {
-        //     current_page: res.meta.current_page,
-        //     last_page: res.meta.last_page,
-        //     from_page: res.meta.from,
-        //     to_page: res.meta.to,
-        //     total_page: res.meta.total,
-        //     path_page: res.meta.path + "page=",
-        //     first_link: res.links.first,
-        //     last_link: res.link.last,
-        //     prev_link: res.link.prev,
-        //     next_link: res.link.next,
-        //   };
         })
         .catch((err) => console.log(err));
     },

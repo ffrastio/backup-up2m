@@ -163,7 +163,7 @@ export default {
   methods: {
     // searchAuthor() {
     //   axios
-    //     .get("http://admin-be.repo-up2m.com/api/list-author?q=" + this.search)
+    //     .get("http://localhost:8001/api/list-author?q=" + this.search)
     //     .then((res) => (this.authors = res.data.data.data))
     //     .catch((err) => console.log(err));
     // },
@@ -173,12 +173,12 @@ export default {
     },
   },
   async mounted() {
-    var jurusan = "http://admin-be.repo-up2m.com/api/list-jurusan";
+    var jurusan = "http://localhost:8001/api/list-jurusan";
     axios.get(jurusan).then((x) => {
       this.jurusans = x.data.data;
     });
     const response = await axios.get(
-      "http://admin-be.repo-up2m.com/api/author"
+      "http://localhost:8001/api/author"
     );
     this.authors = response.data.data;
   },

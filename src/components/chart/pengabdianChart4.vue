@@ -91,7 +91,7 @@ export default {
     },
     getPengabdian(year) {
       var url =
-        "http://admin-be.repo-up2m.com/api/skim-pengabdian?tahun=" + year;
+        "http://localhost:8001/api/skim-pengabdian?tahun=" + year;
       // var headers = {
       //   headers: {
       //   }

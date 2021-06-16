@@ -74,7 +74,7 @@ export default {
       if (this.email && this.password) {
         var that = this;
         axios
-          .post("https://admin-be.repo-up2m.com/api/login", {
+          .post("https://localhost:8001/api/login", {
             email: this.email,
             password: this.password,
           })

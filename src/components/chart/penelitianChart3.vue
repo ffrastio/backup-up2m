@@ -96,7 +96,7 @@ export default {
     },
     getPenelitian(year) {
       var url =
-        "http://admin-be.repo-up2m.com/api/skim-penelitian?tahun=" + year;
+        "http://localhost:8001/api/skim-penelitian?tahun=" + year;
       // var headers = {
       //   headers: {
       //   }
