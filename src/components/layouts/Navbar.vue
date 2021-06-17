@@ -16,7 +16,7 @@
           />
         </a>
         <button
-          class="text-primary cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+          class=" cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
           type="button"
           v-on:click="toggleNavbar()"
         >
@@ -25,7 +25,7 @@
       </div>
       <div
         v-bind:class="{ hidden: !showMenu, flex: showMenu }"
-        class="lg:flex  justify-between items-center"
+        class="lg:flex  justify-between items-center mt-2"
       >
         <ul
           class="flex flex-col lg:flex-row list-none justify-end items-center"
@@ -33,69 +33,57 @@
           <li class="nav-item">
             <router-link
               to="/"
-              class="text-primary hover:bg-primary hover:text-white px-4 py-2 flex items-center rounded "
+              class=" hover:bg-primary hover:text-white px-4 py-2  rounded "
               >Home</router-link
             >
           </li>
           <li class="nav-item">
             <router-link
               :to="{ name: 'About' }"
-              class="text-primary hover:bg-primary hover:text-white px-4 py-2 flex items-center rounded "
+              class=" hover:bg-primary hover:text-white px-4 py-2 flex items-center rounded "
               >About</router-link
             >
           </li>
           <li class="nav-item">
             <router-link
               :to="{ name: 'Author' }"
-              class="text-primary hover:bg-primary hover:text-white px-4 py-2 flex items-center rounded "
+              class=" hover:bg-primary hover:text-white px-4 py-2 flex items-center rounded "
               >Authors</router-link
             >
           </li>
-          <div class="dropdown inline-block relative">
-            <button
-              class="text-primary hover:bg-primary hover:text-white py-2 px-4 rounded inline-flex items-center"
+          <div>
+            <b-dropdown
+              id="dropdown-buttons"
+              text="Sources"
+              class="m-2 "
+              variant="transparent"
             >
-              <span class="mr-1">Sources</span>
-              <svg
-                class="fill-current h-4 w-4"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                />
-              </svg>
-            </button>
-            <ul
-              class="dropdown-menu absolute hidden border w-40 text-left rounded bg-white"
-            >
-              <li class="">
-                <router-link
-                  class="rounded-t text-primary hover:bg-primary hover:text-white border-b  py-2 px-4 block whitespace-no-wrap"
-                  :to="{ name: 'Penelitian' }"
+              <b-dropdown-item
+                class=" border-b  py-2 px-4 block whitespace-no-wrap"
+                ><router-link :to="{ name: 'Penelitian' }"
                   >Penelitian</router-link
-                >
-              </li>
-              <li class="">
-                <router-link
-                  class=" text-primary hover:bg-primary hover:text-white py-2 px-4 block whitespace-no-wrap"
-                  :to="{ name: 'Pengabdian' }"
+                ></b-dropdown-item
+              >
+              <b-dropdown-item
+                class=" py-2 px-4 block whitespace-no-wrap"
+                ><router-link :to="{ name: 'Pengabdian' }"
                   >Pengabdian Masyarakat</router-link
-                >
-              </li>
-            </ul>
+                ></b-dropdown-item
+              >
+            </b-dropdown>
           </div>
           <div class="lg:ml-12">
             <router-link
               v-if="!userLogin"
               :to="{ name: 'Login' }"
-              class="border rounded-md border-primary items-center hover:bg-primary text-primary hover:text-white px-4 py-2"
+              class="border rounded-md border-hijau items-center hover:bg-primary  hover:text-white px-4 py-2"
               >Masuk
             </router-link>
-            <a href="javascript:;"
+            <a
+              href="javascript:;"
               v-else
               @click="logout"
-              class="border rounded-md border-primary items-center hover:bg-primary text-primary hover:text-white px-4 py-2"
+              class="border rounded-md border-hijau items-center hover:bg-primary  hover:text-white px-4 py-2"
               >Logout
             </a>
           </div>
@@ -111,17 +99,17 @@ export default {
   data() {
     return {
       showMenu: false,
-      userLogin: this.$cookies.get('uid')
+      userLogin: this.$cookies.get("uid"),
     };
   },
   methods: {
     toggleNavbar: function() {
       this.showMenu = !this.showMenu;
     },
-    logout: function(){
-      this.$cookies.remove('uid')
-      window.location = '/'
-    }
+    logout: function() {
+      this.$cookies.remove("uid");
+      window.location = "/";
+    },
   },
 };
 </script>
@@ -129,5 +117,8 @@ export default {
 <style>
 .dropdown:hover .dropdown-menu {
   display: block;
+}
+.hijau {
+  color: #008797;
 }
 </style>

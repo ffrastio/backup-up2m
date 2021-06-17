@@ -94,7 +94,7 @@ export default {
       };
     },
     getPengabdian(year) {
-      var url = "http://localhost:8001/api/jurusan-pengabdian?tahun=" + year;
+      var url = "https://admin-be.repo-up2m.com/api/jurusan-pengabdian?tahun=" + year;
       // var headers = {
       //   headers: {
       //   }

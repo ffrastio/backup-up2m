@@ -1,100 +1,66 @@
 <template>
-  <div id="pengabdian">
-    <div class="bg-primary">
-      <div class="block lg:flex items-center px-4 py-4 container mx-auto">
+  <div id="penelitian">
+    <div class="hijau">
+      <div class="flex items-center px-4 py-4 container mx-auto">
         <h1 class="text-white font-bold text-2xl text-left">
-          Penelitian
+          Pengabdian
         </h1>
-        <div class="py-4 text-left mx-auto">
-          <input
-            type="text"
-            v-model="searchPengabdian"
-            placeholder="Search Author . . ."
-            class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-md text-sm focus:outline-none lg:w-96 w-full"
-          />
+      </div>
+    </div>
+    <!-- START Table -->
+    <div class="animated fadeIn container overflow-x-auto">
+      <b-row>
+        <b-col sm="12" lg="12">
+          <b-form-group label-cols-sm="3" label="Filter" class="py-4">
+            <b-input-group>
+              <b-form-input
+                v-model="filter"
+                placeholder="Pencarian Data . . . "
+              ></b-form-input>
+              <b-input-group-append>
+                <b-button v-show="filter.length > 0" @click="filter = ''"
+                  >X</b-button
+                >
+              </b-input-group-append>
+            </b-input-group>
+          </b-form-group>
+          <b-table
+            id="myTable"
+            :busy.sync="isBusy"
+            :items="ListAuthor"
+            :fields="fields"
+            :currentPage="currentPage"
+            :per-page="perPage"
+            bordered
+            striped
+            small
+            :filter="filter"
+          >
+          </b-table>
+        </b-col>
+      </b-row>
+      <div class="lg:flex md:block items-center justify-between py-4">
+        <div>
+          <p class="text-xl text-left">Total : {{ totalRows }} Data</p>
+        </div>
+        <div>
+          <b-row>
+            <b-col md="6" class="md:py-4 justify-center">
+              <b-pagination
+                v-model="currentPage"
+                :total-rows="totalRows"
+                :per-page="perPage"
+                first-text="First"
+                prev-text="<"
+                next-text=">"
+                last-text="Last"
+              ></b-pagination>
+            </b-col>
+          </b-row>
         </div>
       </div>
     </div>
-
-    <!--START Table -->
-    <section id="table" class="overflow-x-auto container mx-auto py-4 w-full">
-      <table class="table-responsive">
-        <thead>
-          <tr>
-            <th class="w-1/2 border py-4">Judul Pengabdian</th>
-            <th class="w-1/6 border py-4">Skim Pengabdian</th>
-            <th class="w-1/6 border py-4">Ketua Pengusul</th>
-            <th class="w-1/6 border py-4">Tahun</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="pengabdian in filteredPengabdian"
-            :key="pengabdian.id"
-            class="hover:bg-gray-100 border"
-          >
-            <td class="border px-6 py-4">
-              <p class="text-left">
-                {{ pengabdian.judul }}
-              </p>
-            </td>
-
-            <td class="px-6 py-4 border">
-              <p class="text-gray-500 text-sm font-semibold tracking-wide">
-                {{ pengabdian.skim_pengabdian }}
-              </p>
-            </td>
-            <td class="px-6 py-4 text-center border">
-              <p class="text-gray-500 text-sm font-semibold tracking-wide">
-                {{ pengabdian.nama_ketua_pengabdian }}
-              </p>
-            </td>
-            <td class="px-6 py-4 text-center border">
-              <p>{{pengabdian.tahun}}</p>
-              <!-- {{ pengabdian.jumlah_anggota }} -->
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    <!--END Table -->
-    <div class="flex container mx-auto justify-between items-center">
-      <div class="px-8 py-4">
-        <p>Total : {{ pengabdians.length }}</p>
-      </div>
-      <div class="items-center space-x-2">
-        <button
-          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
-        >
-          Prev
-        </button>
-        <button
-          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
-        >
-          1
-        </button>
-        <button
-          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
-        >
-          2
-        </button>
-        <button
-          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
-        >
-          3
-        </button>
-        <button
-          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
-        >
-          4
-        </button>
-        <button
-          class="border px-2 py-1 rounded border-primary hover:bg-primary hover:text-white"
-        >
-          Next
-        </button>
-      </div>
-    </div>
+    <!-- ENDS Table -->
   </div>
 </template>
 
@@ -105,47 +71,65 @@ export default {
   components: {},
   data() {
     return {
-      searchPengabdian: "",
-      pengabdians: [],
+      items: [],
+      filter: "",
+      fields: [
+        { key: "judul", sortable: false },
+        { key: "skim_pengabdian", sortable: false },
+        { key: "nama_ketua_pengabdian", sortable: false },
+        { key: "tahun", sortable: false },
+      ],
+      isBusy: false,
+      totalRows: 1,
+      currentPage: 1,
+      perPage: 15,
     };
   },
-  async mounted() {
-    try {
-      let response = await axios.get(
-        "http://localhost:8001/api/list-pengabdian"
-      );
-      this.pengabdians = response.data.data.data;
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  computed: {
-    filteredPengabdian: function() {
-      var pengabdian = this.pengabdians;
-      var searchPengabdian = this.searchPengabdian;
+  methods: {
+    ListAuthor(ctx) {
+      if (ctx.filter != "") {
+        var items = [];
+        this.items.filter((value) => {
+          if (
+            value.judul.toLowerCase().indexOf(ctx.filter.toLowerCase()) > -1
+          ) {
+            items.push(value);
+          }
+        });
 
-      if (!searchPengabdian) {
-        return pengabdian;
+        if (items.length > 0) {
+          console.log(items);
+          return items;
+        } else {
+          return [];
+        }
+      } else {
+        this.isBusy = true;
+        let promise = axios.get(
+          "https://admin-be.repo-up2m.com/api/list-pengabdian?page=" +
+            ctx.currentPage
+        );
+        return promise
+          .then((res) => {
+            var items = res.data.data.data;
+            this.items = res.data.data.data;
+            this.currentPage = res.data.data.current_page;
+            this.totalRows = res.data.data.total;
+            this.isBusy = false;
+            return items;
+          })
+          .catch((error) => {
+            this.isBusy = false;
+            return error;
+          });
       }
-
-      searchPengabdian = searchPengabdian.trim().toLowerCase();
-
-      pengabdian = pengabdian.filter(function(item) {
-        if (item.judul.toLowerCase().indexOf(searchPengabdian) !== -1) {
-          return item;
-        }
-        if (
-          item.nama_ketua_pengabdian.toLowerCase().indexOf(searchPengabdian) !==
-          -1
-        ) {
-          return item;
-        }
-      });
-
-      return pengabdian;
     },
-  }
+  },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.hijau {
+  background: #008797;
+}
+</style>

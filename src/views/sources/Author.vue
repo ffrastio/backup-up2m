@@ -7,7 +7,7 @@
           <div class="flex items-center ">
             <div class="block items center mr-4">
               <h1 class="font-semibold block text-2xl">Authors</h1>
-              <p>Total : {{ authors.length }}</p>
+              <p>Total : {{ total }}</p>
             </div>
             <font-awesome-icon icon="users" size="2x" />
           </div>
@@ -158,29 +158,25 @@ export default {
       pageSize: 10,
       visibleAuthors: [],
       selectJurusan: "",
+      total: 1,
     };
   },
   methods: {
-    // searchAuthor() {
-    //   axios
-    //     .get("http://localhost:8001/api/list-author?q=" + this.search)
-    //     .then((res) => (this.authors = res.data.data.data))
-    //     .catch((err) => console.log(err));
-    // },
     updatePages(pageNumber) {
       this.currentPage = pageNumber;
       this.updateVisibleAuthors;
     },
   },
   async mounted() {
-    var jurusan = "http://localhost:8001/api/list-jurusan";
+    var jurusan = "https://admin-be.repo-up2m.com/api/list-jurusan";
     axios.get(jurusan).then((x) => {
       this.jurusans = x.data.data;
     });
     const response = await axios.get(
-      "http://localhost:8001/api/author"
+      "https://admin-be.repo-up2m.com/api/author"
     );
     this.authors = response.data.data;
+    this.total = response.data.total_data;
   },
   computed: {
     filteredAuthor() {

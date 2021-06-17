@@ -15,7 +15,7 @@
             keperluan untuk mendukung penelitian kamu
           </p>
           <button
-            class="bg-primary hover:bg-primary-200 text-white hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border"
+            class="hijau hover:bg-primary-200 text-white hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border"
           >
             Temukan !
           </button>
@@ -42,7 +42,7 @@
             href="#"
             v-else
             id="downloadPdf"
-            class="bg-primary hover:bg-primary-200 text-white hover:text-white rounded-xl shadow hover:shadow-lg py-2 px-2 border"
+            class="hijau hover:bg-primary-200 text-white hover:text-white rounded-xl shadow hover:shadow-lg py-2 px-2 border"
             @click="exportToPDF(0)"
           >
             <font-awesome-icon icon="file-pdf" class="mr-2" />Download
@@ -113,5 +113,8 @@ export default {
 <style>
 .img-header {
   max-height: 400px;
+}
+.hijau{
+  background: #008797;
 }
 </style>
