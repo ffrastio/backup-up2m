@@ -19,7 +19,7 @@
           v-for="jurusan in jurusans"
           :key="jurusan.id"
         >
-          <div
+          <button
             class="block items-center w-36 justify-items-center transform duration-500 transition hover:scale-110 "
           >
             <img
@@ -31,7 +31,7 @@
             <div class="mb-2">
               <p>{{ jurusan.nama_jurusan }}</p>
             </div>
-          </div>
+          </button>
         </div>
         <!-- END Jurusan Kategori Dekstop -->
         <!-- START Jurusan Kategori Mobile -->
@@ -40,18 +40,18 @@
             class="dropdown border-2 rounded-xl border-primary px-1 py-1 mt-3 ml-6 w-40"
             v-model="selectJurusan"
           >
-            <option value="All" selected="selected">Semua Jurusan</option>
+            <option value="All">Semua Jurusan</option>
             <option value="ADMINISTRASI NIAGA">Administrasi Niaga</option>
             <option value="AKUTANSI">Akutansi</option>
-            <option value="TEKNIK ELEKTRO">Teknik Elektro</option>
+            <option value="EKNIK ELEKTRO">Teknik Elektro</option>
             <option value="TEKNIK GRAFIKA DAN PENERBITAN"
               >Teknik Grafika & Penerbitan</option
             >
             <option value="TEKNIK INFORMATIKA DAN KOMPUTER"
               >Teknik Informatika & Komputer</option
             >
-            <option value="TEKNIK MESIN">Teknik Mesin</option>
-            <option value="TEKNIK SIPIL">Teknik Sipil</option>
+            <option value="teknik mesin">Teknik Mesin</option>
+            <option value="teknik sipil">Teknik Sipil</option>
           </select>
         </div>
         <!-- END Jurusan Kategori Mobile -->
@@ -69,10 +69,35 @@
       />
     </div>
     <!-- END Search Author -->
+    <div class="filter">
+      <label
+        ><input type="radio" v-model="selectJurusan" value="All" /> All</label
+      >
+      <label
+        ><input type="radio" v-model="selectJurusan" value="akutansi" />
+        AKUTANSI</label
+      >
+      <label
+        ><input type="radio" v-model="selectJurusan" value="teknik mesin" />
+        TEKNIK MESIN</label
+      >
+      <label
+        ><input
+          type="radio"
+          v-model="selectJurusan"
+          value="administrasi niaga"
+        />
+        ADMINISTRASI NIAGA</label
+      >
+      <label
+        ><input type="radio" v-model="selectJurusan" value="teknik elektro" />
+        TEKNIK ELEKTRO</label
+      >
+    </div>
     <div class=" flex items-center ">
       <div class="overflow-x-auto w-full">
         <!-- START Table -->
-        <table class="min-h-screen container mx-auto relative">
+        <table class="min-h-screen container mx-auto relative mb-4">
           <thead>
             <tr>
               <th class="w-1/2 border px-4 py-2">Author</th>
@@ -81,20 +106,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-for="author in authors"
-              :key="author.id"
-              :currentPage="currentPage"
-              :pageSize="pageSize"
-            >
+            <tr v-for="author in filteredAuthor" :key="author.id">
               <td class="border px-6 py-4">
                 <div class="flex items-center justify-center">
                   <div class="flex w-20 h-20">
-                    <!-- <img
-                      class="w-20 h-20 object-cover absolute left-0 px-4 py-6 rounded-full"
-                      alt="Foto dosen"
-                      :src="author.avatar"
-                    /> -->
                     <img
                       class="w-20 h-20 object-cover absolute left-0 md:ml-24 ml-4 rounded-full"
                       alt="Foto dosen"
@@ -154,35 +169,35 @@ export default {
       searchAuthor: "",
       authors: [],
       jurusans: [],
-      currentPage: 0,
-      pageSize: 10,
-      visibleAuthors: [],
-      selectJurusan: "",
-      total: 1,
+      selectJurusan: "All",
     };
   },
-  methods: {
-    updatePages(pageNumber) {
-      this.currentPage = pageNumber;
-      this.updateVisibleAuthors;
-    },
-  },
+  // methods: {
+  // },
   async mounted() {
-    var jurusan = "https://admin-be.repo-up2m.com/api/list-jurusan";
+  
+  var jurusan = "https://admin-be.repo-up2m.com/api/list-jurusan";
     axios.get(jurusan).then((x) => {
       this.jurusans = x.data.data;
     });
-    const response = await axios.get(
-      "https://admin-be.repo-up2m.com/api/author"
-    );
-    this.authors = response.data.data;
+    const response = await axios.get("https://admin-be.repo-up2m.com/api/author");
+    const data = response.data.data
+    this.authors = data;
+    console.log(data)
     this.total = response.data.total_data;
   },
   computed: {
     filteredAuthor() {
-      return this.authors.filter((author) =>
-        author.nama.toLowerCase().includes(this.searchAuthor.toLowerCase())
-      );
+      var vm = this;
+      var jurusan = vm.selectJurusan;
+
+      if (jurusan === "All") {
+        return vm.authors;
+      } else {
+        return vm.authors.filter(function(author) {
+          return author.jurusan === jurusan;
+        });
+      }
     },
   },
 };
