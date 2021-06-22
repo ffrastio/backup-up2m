@@ -17,6 +17,7 @@ import {
   faMapMarkerAlt,
   faUsers,
   faFilePdf,
+  faFileExcel,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -27,7 +28,8 @@ library.add(
   faPhoneSquareAlt,
   faMapMarkerAlt,
   faUsers,
-  faFilePdf
+  faFilePdf,
+  faFileExcel
 );
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue);

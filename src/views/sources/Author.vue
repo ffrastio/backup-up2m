@@ -71,27 +71,58 @@
     <!-- END Search Author -->
     <div class="filter">
       <label
-        ><input type="radio" v-model="selectJurusan" value="All" /> All</label
+        ><input
+          type="radio"
+          v-model="selectJurusan"
+          value="All"
+        />Semuanya</label
       >
       <label
-        ><input type="radio" v-model="selectJurusan" value="akutansi" />
+        ><input type="radio" v-model="selectJurusan" value="AKUNTANSI" />
         AKUTANSI</label
       >
       <label
-        ><input type="radio" v-model="selectJurusan" value="teknik mesin" />
+        ><input type="radio" v-model="selectJurusan" value="TEKNIK MESIN" />
         TEKNIK MESIN</label
       >
       <label
         ><input
           type="radio"
           v-model="selectJurusan"
-          value="administrasi niaga"
+          value="ADMINISTRASI NIAGA"
         />
         ADMINISTRASI NIAGA</label
       >
       <label
-        ><input type="radio" v-model="selectJurusan" value="teknik elektro" />
+        ><input type="radio" v-model="selectJurusan" value="TEKNIK ELEKTRO" />
         TEKNIK ELEKTRO</label
+      >
+      <label
+        ><input
+          type="radio"
+          v-model="selectJurusan"
+          value="TEKNIK INFORMATIKA DAN KOMPUTER"
+        />
+        TEKNIK INFORMATIKA</label
+      ><label
+        ><input type="radio" v-model="selectJurusan" value="DIREKTORAT" />
+        DIREKTORAT</label
+      >
+      <label
+        ><input type="radio" v-model="selectJurusan" value="PASCASARJANA" />
+        PASCASARJANA</label
+      >
+      <label
+        ><input
+          type="radio"
+          v-model="selectJurusan"
+          value="TEKNIK GRAFIKA DAN PENERBITAN"
+        />
+        TEKNIK GRAFIKA DAN PENERBITAN</label
+      >
+      <label
+        ><input type="radio" v-model="selectJurusan" value="TEKNIK SIPIL" />
+        TEKNIK SIPIL</label
       >
     </div>
     <div class=" flex items-center ">
@@ -175,15 +206,16 @@ export default {
   // methods: {
   // },
   async mounted() {
-  
-  var jurusan = "https://admin-be.repo-up2m.com/api/list-jurusan";
+    var jurusan = "https://admin-be.repo-up2m.com/api/list-jurusan";
     axios.get(jurusan).then((x) => {
       this.jurusans = x.data.data;
     });
-    const response = await axios.get("https://admin-be.repo-up2m.com/api/author");
-    const data = response.data.data
+    const response = await axios.get(
+      "https://admin-be.repo-up2m.com/api/author"
+    );
+    const data = response.data.data;
     this.authors = data;
-    console.log(data)
+    console.log(data);
     this.total = response.data.total_data;
   },
   computed: {

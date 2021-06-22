@@ -14,11 +14,12 @@
             UP2M Menyediakan berbagai data dan <br />
             keperluan untuk mendukung penelitian kamu
           </p>
-          <button
+          <router-link
             class="hijau hover:bg-primary-200 text-white hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border"
+            to="/penelitian"
           >
             Temukan !
-          </button>
+          </router-link>
         </div>
         <!--Right Col-->
         <div class="w-full lg:w-1/2 lg:py-6 text-center">
