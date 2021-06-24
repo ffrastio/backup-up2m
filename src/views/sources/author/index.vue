@@ -15,12 +15,12 @@
         <!-- END Author -->
         <!-- START Jurusan Kategori dekstop -->
         <div
-          class="hidden md:flex mx-auto "
+          class="hidden md:flex mx-auto items-center"
           v-for="jurusan in jurusans"
           :key="jurusan.id"
         >
           <button
-            class="block items-center w-36 justify-items-center transform duration-500 transition hover:scale-110 "
+            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 "
           >
             <img
               src="@/assets/content/content.png"
@@ -28,8 +28,8 @@
               class="object-cover mt-4 mx-auto"
               style="height: 50px"
             />
-            <div class="mb-2">
-              <p>{{ jurusan.nama_jurusan }}</p>
+            <div class="mb-2 w-32">
+              <p class="uppercase">{{ jurusan.nama_jurusan }}</p>
             </div>
           </button>
         </div>
@@ -57,19 +57,10 @@
         <!-- END Jurusan Kategori Mobile -->
       </div>
     </div>
-    <!-- START Search Author -->
-    <div
-      class="container mx-auto px-4 py-4 text-left flex items-center justify-between"
-    >
-      <input
-        type="text"
-        v-model="searchAuthor"
-        placeholder="Search Author . . ."
-        class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-full text-sm focus:outline-none"
-      />
-    </div>
-    <!-- END Search Author -->
-    <div class="filter">
+    <div class="container justify-between flex items-center">
+      <!-- START Filter -->
+    <div class="filter grid grid-cols-2 items-center space-y-3">
+      <div class=""></div>
       <label
         ><input
           type="radio"
@@ -109,10 +100,6 @@
         DIREKTORAT</label
       >
       <label
-        ><input type="radio" v-model="selectJurusan" value="PASCASARJANA" />
-        PASCASARJANA</label
-      >
-      <label
         ><input
           type="radio"
           v-model="selectJurusan"
@@ -125,6 +112,23 @@
         TEKNIK SIPIL</label
       >
     </div>
+    <!-- ENDS Filter -->
+      <!-- START Search Author -->
+    <div
+      class=" px-4 py-4 text-left flex items-center"
+    >
+      <input
+        type="text"
+        v-model="searchAuthor"
+        placeholder="Search Author . . ."
+        class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-full text-sm focus:outline-none"
+      />
+    </div>
+    <!-- END Search Author -->
+    </div>
+    <div class="container mx-auto py-4">
+      <!-- <JwPagination :items="penulis" @changePage="onChangePage"></JwPagination> -->
+    </div>
     <div class=" flex items-center ">
       <div class="overflow-x-auto w-full">
         <!-- START Table -->
@@ -134,6 +138,7 @@
               <th class="w-1/2 border px-4 py-2">Author</th>
               <th class="w-1/4 border px-4 py-2">Penelitian</th>
               <th class="w-1/4 border px-4 py-2">Pengabdian</th>
+              <!-- <th class="w-1/4 border px-4 py-2">Detail</th> -->
             </tr>
           </thead>
           <tbody>
@@ -181,6 +186,13 @@
                   {{ author.pengabdian_count }}
                 </p>
               </td>
+              <!-- <td class="px-6 py-4 text-center border">
+                <router-link :to="'/author/'+author.nama"
+                  class="border rounded-md hijau p-2 text-white"
+                >
+                  Detail
+                </router-link>
+              </td> -->
             </tr>
           </tbody>
         </table>
@@ -191,20 +203,29 @@
 </template>
 
 <script>
+// const penulis = axios.get("https://admin-be.repo-up2m.com/api/author");
+// import JwPagination from "jw-vue-pagination";
 import axios from "axios";
 export default {
   name: "author",
-  components: {},
+  components: {
+    // JwPagination,
+  },
   data() {
     return {
+      // penulis,
       searchAuthor: "",
       authors: [],
       jurusans: [],
       selectJurusan: "All",
     };
   },
-  // methods: {
-  // },
+  methods: {
+    onChangePage(authors) {
+      // update page of items
+      this.authors = authors;
+    },
+  },
   async mounted() {
     var jurusan = "https://admin-be.repo-up2m.com/api/list-jurusan";
     axios.get(jurusan).then((x) => {

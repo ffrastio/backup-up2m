@@ -19,7 +19,7 @@
         </button>
       </div>
       <!-- START Table -->
-      <table id="myTable" class="table table-bordered py-4">
+      <table id="myTable" class="table table-bordered py-4" ref="table">
         <thead>
           <tr>
             <th class="text-center">Judul</th>
@@ -38,7 +38,7 @@
 import axios from "axios";
 import $ from "jquery";
 export default {
-  name: "Penelitian",
+  name: "Pengabdian",
   components: {},
   data() {
     return {
@@ -67,15 +67,21 @@ export default {
           $("#myTable").DataTable({
             data: response.data.data.data,
             columns: [
-              { data: "judul", class:"p-4 text-left w-1/2"},
-              { data: "nama_ketua_pengabdian", class:"p-4" },
-              { data: "skim_pengabdian", class:"p-4" },
-              { data: "tahun", class:"w-40 p-4"},
+              { data: "judul", class: "py-4 text-left w-1/2 px-4" },
+              { data: "nama_ketua_pengabdian", class: " p-4" },
+              { data: "skim_pengabdian", class: " p-4" },
+              { data: "tahun", class: "w-40 p-4" },
             ],
           });
           console.log(response.data);
         })
         .catch((error) => console.log(error.response));
+    },
+    tableToExcel(table, name) {
+      if (!table.nodeType) table = this.$refs.table;
+      var ctx = { worksheet: name || "Worksheet", table: table.innerHTML };
+      window.location.href =
+        this.uri + this.base64(this.format(this.template, ctx));
     },
   },
 };

@@ -18,7 +18,13 @@ const routes = [
   {
     path: "/author",
     name: "Author",
-    component: () => import("../views/sources/Author.vue"),
+    component: () => import("../views/sources/author/index.vue"),
+  },
+  {
+    path: "/author/:id",
+    props: true,
+    name: "AuthorDetail",
+    component: () => import("../views/sources/author/detail.vue"),
   },
   {
     path: "/penelitian",

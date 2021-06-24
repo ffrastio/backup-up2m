@@ -7,7 +7,8 @@ import router from "./router";
 import "./assets/tailwind.css";
 import "./axios";
 import "datatables.net-dt";
-import "datatables.net-dt/css/jquery.dataTables.css"
+import "datatables.net-dt/css/jquery.dataTables.css";
+import JwPagination from "jw-vue-pagination";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faUserSecret,
@@ -36,7 +37,12 @@ Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
 Vue.config.productionTip = false;
-Vue.component("font-awesome-icon", FontAwesomeIcon);
+Vue.component(
+  "font-awesome-icon",
+  FontAwesomeIcon,
+  "jw-pagination",
+  JwPagination
+);
 
 import VueCookies from "vue-cookies";
 Vue.use(VueCookies);
