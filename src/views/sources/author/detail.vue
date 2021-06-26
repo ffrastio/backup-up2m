@@ -3,8 +3,12 @@
     <div class="container py-4">
       <p>
         {{
-          `${detailAuthor.gelar_depan ? detailAuthor.gelar_depan : ""} ${detailAuthor.nama}${
-            detailAuthor.gelar_belakang ? `, ${detailAuthor.gelar_belakang}` : ""
+          `${detailAuthor.gelar_depan ? detailAuthor.gelar_depan : ""} ${
+            detailAuthor.nama
+          }${
+            detailAuthor.gelar_belakang
+              ? `, ${detailAuthor.gelar_belakang}`
+              : ""
           }`
         }}
       </p>
@@ -19,28 +23,21 @@ export default {
     return {
       jurusan: [],
       detailAuthor: [],
-      idAuthor: this.$route.params.id,
     };
   },
   // methods:{
 
   // },
-  async mounted() {
-    // var jurusan = "https://admin-be.repo-up2m.com/api/list-jurusan";
-    // axios.get(jurusan).then((x) => {
-    //   this.jurusans = x.data.data;
-    // });
-    const response = await axios.get(
-      "https://admin-be.repo-up2m.com/api/author",
-      {
+
+  mounted() {
+    axios
+      .get("https://admin-be.repo-up2m.com/api/list-author", {
         params: {
-          idAuthor: this.$route.params.id,
+          id: this.$route.params.id,
         },
-      }
-    );
-    const data = response.data.data;
-    this.detailAuthor = data;
-    console.log(data);
+      })
+      .then((res) => (this.detailAuthor = res.data.data))
+      .catch((err) => console.log(err));
   },
 };
 </script>

@@ -51,6 +51,13 @@
               >Authors</router-link
             >
           </li>
+          <li class="nav-item">
+            <router-link
+              :to="{ name: 'Jurusan' }"
+              class=" hover:bg-primary hover:text-white px-4 py-2 flex items-center rounded "
+              >Jurusan</router-link
+            >
+          </li>
           <div>
             <b-dropdown
               id="dropdown-buttons"

@@ -29,21 +29,23 @@ const routes = [
   {
     path: "/penelitian",
     name: "Penelitian",
-    component: () =>
-      import("../views/sources/Penelitian.vue"),
+    component: () => import("../views/sources/Penelitian.vue"),
   },
   {
     path: "/pengabdian",
     name: "Pengabdian",
-    component: () =>
-      import("../views/sources/Pengabdian.vue"),
+    component: () => import("../views/sources/Pengabdian.vue"),
   },
   {
     path: "/login",
     name: "Login",
-    component: () =>
-        import("../views/auth/Login.vue")
-}
+    component: () => import("../views/auth/Login.vue"),
+  },
+  {
+    path: "/jurusan",
+    name: "Jurusan",
+    component: () => import("../views/sources/Jurusan.vue"),
+  },
 ];
 
 const router = new VueRouter({
