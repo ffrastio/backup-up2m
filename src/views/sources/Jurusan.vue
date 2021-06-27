@@ -1,6 +1,6 @@
 <template>
   <div id="authorDetail">
-    <div class="container text-left py-4">
+    <div class="container mx-auto text-left py-4">
       <h1 class="text-xl font-semibold py-4">Daftar Jurusan Politeknik Negeri Jakarta</h1>
       <div class="grid lg:grid-cols-3 gap-3">
         <div

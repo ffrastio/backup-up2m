@@ -22,7 +22,6 @@ const routes = [
   },
   {
     path: "/author/:id",
-    props: true,
     name: "AuthorDetail",
     component: () => import("../views/sources/author/detail.vue"),
   },

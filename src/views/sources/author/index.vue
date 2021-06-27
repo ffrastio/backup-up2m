@@ -14,126 +14,180 @@
         </div>
         <!-- END Author -->
         <!-- START Jurusan Kategori dekstop -->
-        <div class="hidden md:flex mx-auto items-center">
-          <button
-            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 "
+        <div class="hidden md:flex mx-auto items-center py-4">
+          <div
+            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 ml-4"
           >
-            <img
-              src="@/assets/content/content.png"
-              alt="logoPnj"
-              class="object-cover mt-4 mx-auto"
-              style="height: 50px"
-            />
-            <div class="mb-2 w-32">
-              <p class="uppercase">Administrasi dan niaga</p>
-            </div>
-          </button>
-        </div>
-        <div class="hidden md:flex mx-auto items-center">
-          <button
-            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 "
+            <label
+              ><input
+                type="radio"
+                v-model="selectJurusan"
+                value="All"
+                class="hidden"
+              />
+              <img
+                src="@/assets/content/content.png"
+                alt="logoPnj"
+                class="object-cover mx-auto mb-2"
+                style="height: 50px"
+              />
+              Semuanya</label
+            >
+          </div>
+          <div
+            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 ml-4"
           >
-            <img
-              src="@/assets/content/content.png"
-              alt="logoPnj"
-              class="object-cover mt-4 mx-auto"
-              style="height: 50px"
-            />
-            <div class="mb-2 w-32">
-              <p class="uppercase">Akutansi</p>
-            </div>
-          </button>
-        </div>
-        <div class="hidden md:flex mx-auto items-center">
-          <button
-            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 "
+            <label
+              ><input
+                type="radio"
+                v-model="selectJurusan"
+                value="ADMINISTRASI NIAGA"
+                class="hidden"
+              />
+              <img
+                src="@/assets/content/content.png"
+                alt="logoPnj"
+                class="object-cover mx-auto mb-2"
+                style="height: 50px"
+              />
+              ADMINISTRASI NIAGA</label
+            >
+          </div>
+          <div
+            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 ml-4 "
           >
-            <img
-              src="@/assets/content/content.png"
-              alt="logoPnj"
-              class="object-cover mt-4 mx-auto"
-              style="height: 50px"
-            />
-            <div class="mb-2 w-32">
-              <p class="uppercase">Direktorat</p>
-            </div>
-          </button>
-        </div>
-        <div class="hidden md:flex mx-auto items-center">
-          <button
-            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 "
+            <label
+              ><input
+                type="radio"
+                v-model="selectJurusan"
+                value="AKUNTANSI"
+                class="hidden"
+              />
+              <img
+                src="@/assets/content/content.png"
+                alt="logoPnj"
+                class="object-cover mx-auto mb-2"
+                style="height: 50px"
+              />
+              AKUTANSI</label
+            >
+          </div>
+          <div
+            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 ml-4 "
           >
-            <img
-              src="@/assets/content/content.png"
-              alt="logoPnj"
-              class="object-cover mt-4 mx-auto"
-              style="height: 50px"
-            />
-            <div class="mb-2 w-32">
-              <p class="uppercase">Teknik Elektro</p>
-            </div>
-          </button>
-        </div>
-        <div class="hidden md:flex mx-auto items-center">
-          <button
-            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 "
+            <label
+              ><input
+                type="radio"
+                v-model="selectJurusan"
+                value="DIREKTORAT"
+                class="hidden"
+              />
+              <img
+                src="@/assets/content/content.png"
+                alt="logoPnj"
+                class="object-cover mx-auto mb-2"
+                style="height: 50px"
+              />
+              DIREKTORAT</label
+            >
+          </div>
+          <div
+            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 ml-4 "
           >
-            <img
-              src="@/assets/content/content.png"
-              alt="logoPnj"
-              class="object-cover mt-4 mx-auto"
-              style="height: 50px"
-            />
-            <div class="mb-2 w-32">
-              <p class="uppercase">Teknik Grafika dan Penerbitan</p>
-            </div>
-          </button>
-        </div>
-        <div class="hidden md:flex mx-auto items-center">
-          <button
-            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 "
+            <label
+              ><input
+                type="radio"
+                v-model="selectJurusan"
+                value="TEKNIK ELEKTRO"
+                class="hidden"
+              />
+              <img
+                src="@/assets/content/content.png"
+                alt="logoPnj"
+                class="object-cover mx-auto mb-2"
+                style="height: 50px"
+              />
+              TEKNIK ELEKTRO</label
+            >
+          </div>
+          <div
+            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 ml-4 "
           >
-            <img
-              src="@/assets/content/content.png"
-              alt="logoPnj"
-              class="object-cover mt-4 mx-auto"
-              style="height: 50px"
-            />
-            <div class="mb-2 w-32">
-              <p class="uppercase">TIK</p>
-            </div>
-          </button>
-        </div>
-        <div class="hidden md:flex mx-auto items-center">
-          <button
-            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 "
+            <label
+              ><input
+                type="radio"
+                v-model="selectJurusan"
+                value="TEKNIK GRAFIKA DAN PENERBITAN"
+                class="hidden"
+              />
+              <img
+                src="@/assets/content/content.png"
+                alt="logoPnj"
+                class="object-cover mx-auto mb-2"
+                style="height: 50px"
+              />
+              GRAFIKA & PENERBITAN</label
+            >
+          </div>
+          <div
+            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 ml-4 "
           >
-            <img
-              src="@/assets/content/content.png"
-              alt="logoPnj"
-              class="object-cover mt-4 mx-auto"
-              style="height: 50px"
-            />
-            <div class="mb-2 w-32">
-              <p class="uppercase">Teknik Mesin</p>
-            </div>
-          </button>
-        </div>
-        <div class="hidden md:flex mx-auto items-center">
-          <button
-            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 "
+            <label
+              ><input
+                type="radio"
+                v-model="selectJurusan"
+                value="TEKNIK INFORMATIKA DAN KOMPUTER"
+                class="hidden"
+              />
+              <img
+                src="@/assets/content/content.png"
+                alt="logoPnj"
+                class="object-cover mx-auto mb-2"
+                style="height: 50px"
+              />
+              TEKNIK INFORMATIKA</label
+            >
+          </div>
+          <div
+            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 ml-4 "
           >
-            <img
-              src="@/assets/content/content.png"
-              alt="logoPnj"
-              class="object-cover mt-4 mx-auto"
-              style="height: 50px"
-            />
-            <div class="mb-2 w-32">
-              <p class="uppercase">Teknik Sipil</p>
-            </div>
-          </button>
+            <label
+              ><input
+                type="radio"
+                v-model="selectJurusan"
+                value="TEKNIK MESIN"
+                class="hidden"
+              />
+              <img
+                src="@/assets/content/content.png"
+                alt="logoPnj"
+                class="object-cover mx-auto mb-2"
+                style="height: 50px"
+              />
+              TEKNIK MESIN</label
+            >
+          </div>
+          <div
+            class="block items-center justify-items-center transform duration-500 transition hover:scale-110 ml-4 "
+          >
+            <label
+              ><input
+                type="radio"
+                v-model="selectJurusan"
+                value="TEKNIK SIPIL"
+                class="hidden"
+              />
+              <img
+                src="@/assets/content/content.png"
+                alt="logoPnj"
+                class="object-cover mx-auto mb-2"
+                style="height: 50px"
+              />
+              TEKNIK SIPIL</label
+            >
+          </div>
         </div>
+
         <!-- END Jurusan Kategori Dekstop -->
         <!-- START Jurusan Kategori Mobile -->
         <div class="items-center justify-center overflow-x-auto lg:hidden">
@@ -159,61 +213,6 @@
       </div>
     </div>
     <div class="container justify-between flex items-center">
-      <!-- START Filter -->
-      <div class="filter grid grid-cols-2 items-center space-y-3">
-        <div class=""></div>
-        <label
-          ><input
-            type="radio"
-            v-model="selectJurusan"
-            value="All"
-          />Semuanya</label
-        >
-        <label
-          ><input type="radio" v-model="selectJurusan" value="AKUNTANSI" />
-          AKUTANSI</label
-        >
-        <label
-          ><input type="radio" v-model="selectJurusan" value="TEKNIK MESIN" />
-          TEKNIK MESIN</label
-        >
-        <label
-          ><input
-            type="radio"
-            v-model="selectJurusan"
-            value="ADMINISTRASI NIAGA"
-          />
-          ADMINISTRASI NIAGA</label
-        >
-        <label
-          ><input type="radio" v-model="selectJurusan" value="TEKNIK ELEKTRO" />
-          TEKNIK ELEKTRO</label
-        >
-        <label
-          ><input
-            type="radio"
-            v-model="selectJurusan"
-            value="TEKNIK INFORMATIKA DAN KOMPUTER"
-          />
-          TEKNIK INFORMATIKA</label
-        ><label
-          ><input type="radio" v-model="selectJurusan" value="DIREKTORAT" />
-          DIREKTORAT</label
-        >
-        <label
-          ><input
-            type="radio"
-            v-model="selectJurusan"
-            value="TEKNIK GRAFIKA DAN PENERBITAN"
-          />
-          TEKNIK GRAFIKA DAN PENERBITAN</label
-        >
-        <label
-          ><input type="radio" v-model="selectJurusan" value="TEKNIK SIPIL" />
-          TEKNIK SIPIL</label
-        >
-      </div>
-      <!-- ENDS Filter -->
       <!-- START Search Author -->
       <div class=" px-4 py-4 text-left flex items-center">
         <input
@@ -303,17 +302,12 @@
 </template>
 
 <script>
-// const penulis = axios.get("https://admin-be.repo-up2m.com/api/author");
-// import JwPagination from "jw-vue-pagination";
 import axios from "axios";
 export default {
   name: "author",
-  components: {
-    // JwPagination,
-  },
+  components: {},
   data() {
     return {
-      // penulis,
       searchAuthor: "",
       authors: [],
       jurusans: [],
@@ -332,7 +326,7 @@ export default {
       this.jurusans = x.data.data;
     });
     const response = await axios.get(
-      "https://admin-be.repo-up2m.com/api/list-author"
+      "https://admin-be.repo-up2m.com/api/author"
     );
     const data = response.data.data;
     this.authors = data;
@@ -341,6 +335,7 @@ export default {
   },
   computed: {
     filteredAuthor() {
+      
       var vm = this;
       var jurusan = vm.selectJurusan;
 
@@ -351,6 +346,12 @@ export default {
           return author.jurusan === jurusan;
         });
       }
+    },
+
+    findAuthor() {
+      return this.authors.filter((author) =>
+        author.nama.toLowerCase().includes(this.searchAuthor.toLowerCase())
+      );
     },
   },
 };
