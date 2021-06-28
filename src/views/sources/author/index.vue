@@ -213,13 +213,16 @@
       </div>
     </div>
     <div class="container justify-between flex items-center">
+      <div>
+        <p class="text-xl font-semibold">Tabel Daftar Author</p>
+      </div>
       <!-- START Search Author -->
-      <div class=" px-4 py-4 text-left flex items-center">
+      <div class="mt-4 text-left flex items-center">
         <input
           type="text"
           v-model="searchAuthor"
           placeholder="Search Author . . ."
-          class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-full text-sm focus:outline-none"
+          class="border-2 border-gray-200 bg-white h-10 px-5 rounded-md text-sm focus:outline-none"
         />
       </div>
       <!-- END Search Author -->
@@ -231,7 +234,7 @@
       <div class="overflow-x-auto w-full">
         <!-- START Table -->
         <table class="min-h-screen container mx-auto relative mb-4">
-          <thead>
+          <thead class="bg-gray-500 text-white">
             <tr>
               <th class="w-1/2 border px-4 py-2">Author</th>
               <th class="w-1/4 border px-4 py-2">Penelitian</th>
@@ -241,7 +244,7 @@
           </thead>
           <tbody>
             <tr v-for="author in filteredAuthor" :key="author.id">
-              <td class="border px-6 py-4">
+              <td class="border px-4 py-4">
                 <div class="flex items-center justify-center">
                   <div class="flex w-20 h-20">
                     <img
@@ -330,17 +333,18 @@ export default {
     );
     const data = response.data.data;
     this.authors = data;
-    console.log(data);
+    // console.log(data);
     this.total = response.data.total_data;
   },
   computed: {
     filteredAuthor() {
-      
       var vm = this;
       var jurusan = vm.selectJurusan;
 
       if (jurusan === "All") {
-        return vm.authors;
+        return vm.authors.filter((author) =>
+          author.nama.toLowerCase().includes(this.searchAuthor.toLowerCase())
+        );
       } else {
         return vm.authors.filter(function(author) {
           return author.jurusan === jurusan;
