@@ -6,12 +6,12 @@
         <div
           v-for="jurusan in jurusans"
           :key="jurusan.id"
-          class="border p-4 rounded-md flex items-center flex-wrap mx-auto "
+          class="border p-4 rounded-md flex items-center flex-wrap"
         >
           <img
             src="@/assets/content/content.png"
             alt="logoPnj"
-            class="object-cover flex-row"
+            class="object-cover flex-row mx-auto"
             style="height: 100px; width: 100px"
           />
           <div class="block ml-6 w-64">
@@ -46,7 +46,7 @@ export default {
     );
     const data = response.data.data;
     this.jurusans = data;
-    console.log(data);
+    // console.log(data);
   },
 };
 </script>

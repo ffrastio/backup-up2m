@@ -9,7 +9,7 @@
               <h1 class="font-semibold block text-2xl">Authors</h1>
               <p>Total : {{ total }}</p>
             </div>
-            <font-awesome-icon icon="users" size="2x" />
+            <font-awesome-icon icon="users" size="2x" class="hidden md:flex" />
           </div>
         </div>
         <!-- END Author -->
@@ -190,15 +190,17 @@
 
         <!-- END Jurusan Kategori Dekstop -->
         <!-- START Jurusan Kategori Mobile -->
-        <div class="items-center justify-center overflow-x-auto lg:hidden">
+        <div
+          class="items-center justify-center overflow-x-auto lg:hidden text-left"
+        >
           <select
-            class="dropdown border-2 rounded-xl border-primary px-1 py-1 mt-3 ml-6 w-40"
+            class="dropdown border-2 rounded-xl focus:outline-none px-1 py-1 mt-2 ml-4 w-40"
             v-model="selectJurusan"
           >
             <option value="All">Semua Jurusan</option>
             <option value="ADMINISTRASI NIAGA">Administrasi Niaga</option>
-            <option value="AKUTANSI">Akutansi</option>
-            <option value="EKNIK ELEKTRO">Teknik Elektro</option>
+            <option value="AKUNTANSI">Akutansi</option>
+            <option value="TEKNIK ELEKTRO">Teknik Elektro</option>
             <option value="TEKNIK GRAFIKA DAN PENERBITAN"
               >Teknik Grafika & Penerbitan</option
             >
@@ -212,17 +214,18 @@
         <!-- END Jurusan Kategori Mobile -->
       </div>
     </div>
-    <div class="container justify-between flex items-center">
-      <div>
-        <p class="text-xl font-semibold">Tabel Daftar Author</p>
-      </div>
+    <div class="container justify-between md:flex items-center">
+      <p class="text-xl font-semibold mt-4 hidden md:flex">
+        Tabel Daftar Author
+      </p>
+
       <!-- START Search Author -->
-      <div class="mt-4 text-left flex items-center">
+      <div class="mt-4 ml-4 flex items-center">
         <input
           type="text"
           v-model="searchAuthor"
           placeholder="Search Author . . ."
-          class="border-2 border-gray-200 bg-white h-10 px-5 rounded-md text-sm focus:outline-none"
+          class="border border-gray-200 bg-white h-10 px-5 rounded-md text-sm focus:outline-none"
         />
       </div>
       <!-- END Search Author -->

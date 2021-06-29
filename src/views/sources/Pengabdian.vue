@@ -65,6 +65,7 @@ export default {
         .get("https://admin-be.repo-up2m.com/api/list-pengabdian?limit=10000")
         .then((response) => {
           $("#myTable").DataTable({
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
             data: response.data.data.data,
             columns: [
               { data: "judul", class: "py-4 text-left w-1/2 px-4" },
@@ -73,7 +74,7 @@ export default {
               { data: "tahun", class: "w-40 p-4" },
             ],
           });
-          console.log(response.data);
+          // console.log(response.data);
         })
         .catch((error) => console.log(error.response));
     },

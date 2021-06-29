@@ -3,7 +3,7 @@
     <p class="text-3xl font-semibold border-b py-4">Detail Author</p>
     <div class="container mx-auto">
       <div class="flex items-center p-4 text-left">
-        <div class="flex w-20 h-20">
+        <div class="flex w-50 h-50">
           <img
             class="w-20 h-20 object-cover"
             alt="Foto dosen"
@@ -26,65 +26,79 @@
       <div class="container mx-auto p-4">
         <p class="text-xl font-semibold uppercase text-left">Penelitian :</p>
         <div class="py-4" v-if="author.penelitian.length > 0">
-          <!-- START Table Penelitian -->
-          <table class="border w-full">
-            <thead class="bg-gray-400 text-white">
-              <tr>
-                <th class="border p-4">Judul</th>
-                <th class="border p-4">Skim Penelitian</th>
-                <th class="border p-4">Ketua Penelitian</th>
-                <th class="border p-4">Tahun</th>
-              </tr>
-            </thead>
+          <div class="overflow-x-auto w-full">
+            <!-- START Table Penelitian -->
+            <table class="border w-full">
+              <thead class="bg-gray-400 text-white">
+                <tr>
+                  <th class="border p-4">Judul</th>
+                  <th class="border p-4">Skim Penelitian</th>
+                  <th class="border p-4">Ketua Penelitian</th>
+                  <th class="border p-4">Tahun</th>
+                </tr>
+              </thead>
 
-            <tbody>
-              <tr v-for="penelitian in author.penelitian" :key="penelitian.id">
-                <td class="border p-4 text-left w-50">
-                  {{ penelitian.judul }}
-                </td>
-                <td class="border p-4 ">{{ penelitian.skim_penelitian }}</td>
-                <td class="border p-4 ">
-                  {{ penelitian.nama_ketua_penelitian }}
-                </td>
-                <td class="border p-4 ">{{ penelitian.tahun }}</td>
-              </tr>
-            </tbody>
-          </table>
+              <tbody>
+                <tr
+                  v-for="penelitian in author.penelitian"
+                  :key="penelitian.id"
+                >
+                  <td class="border p-4 text-left w-50">
+                    {{ penelitian.judul }}
+                  </td>
+                  <td class="border p-4 ">{{ penelitian.skim_penelitian }}</td>
+                  <td class="border p-4 ">
+                    {{ penelitian.nama_ketua_penelitian }}
+                  </td>
+                  <td class="border p-4 ">{{ penelitian.tahun }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div v-else>
-          <p class="text-xl font-medium">Tidak ada data Penelitian Masyarakat</p> 
+          <p class="text-xl font-medium">
+            Tidak ada data Penelitian Masyarakat
+          </p>
         </div>
       </div>
       <div class="container mx-auto p-4">
         <p class="text-xl font-semibold uppercase text-left">Pengabdian :</p>
         <div class="py-4" v-if="author.pengabdian.length > 0">
-          <!-- START Table pengabdian -->
-          <table class="border w-full">
-            <thead class="bg-gray-400 text-white">
-              <tr>
-                <th class="border p-4">Judul</th>
-                <th class="border p-4">Skim pengabdian</th>
-                <th class="border p-4">Ketua pengabdian</th>
-                <th class="border p-4">Tahun</th>
-              </tr>
-            </thead>
+          <div class="overflow-x-auto w-full">
+            <!-- START Table pengabdian -->
+            <table class="border w-full relative">
+              <thead class="bg-gray-400 text-white">
+                <tr>
+                  <th class="border p-4">Judul</th>
+                  <th class="border p-4">Skim pengabdian</th>
+                  <th class="border p-4">Ketua pengabdian</th>
+                  <th class="border p-4">Tahun</th>
+                </tr>
+              </thead>
 
-            <tbody>
-              <tr v-for="pengabdian in author.pengabdian" :key="pengabdian.id">
-                <td class="border p-4 text-left w-50">
-                  {{ pengabdian.judul }}
-                </td>
-                <td class="border p-4 ">{{ pengabdian.skim_pengabdian }}</td>
-                <td class="border p-4 ">
-                  {{ pengabdian.nama_ketua_pengabdian }}
-                </td>
-                <td class="border p-4 ">{{ pengabdian.tahun }}</td>
-              </tr>
-            </tbody>
-          </table>
+              <tbody>
+                <tr
+                  v-for="pengabdian in author.pengabdian"
+                  :key="pengabdian.id"
+                >
+                  <td class="border p-4 text-left w-50">
+                    {{ pengabdian.judul }}
+                  </td>
+                  <td class="border p-4 ">{{ pengabdian.skim_pengabdian }}</td>
+                  <td class="border p-4 ">
+                    {{ pengabdian.nama_ketua_pengabdian }}
+                  </td>
+                  <td class="border p-4 ">{{ pengabdian.tahun }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div class="p-4" v-else >
-          <p class="text-xl font-medium">Tidak ada data Pengabdian Masyarakat</p> 
+        <div class="p-4" v-else>
+          <p class="text-xl font-medium">
+            Tidak ada data Pengabdian Masyarakat
+          </p>
         </div>
       </div>
     </div>
