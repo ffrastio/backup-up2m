@@ -26,6 +26,7 @@
             <th class="text-center">Judul</th>
             <th class="text-center">Nama Ketua Pengabdian</th>
             <th class="text-center">Skim Pengabdian</th>
+            <th class="text-center">Jurusan</th>
             <th class="text-center">Tahun</th>
           </tr>
         </thead>
@@ -72,6 +73,7 @@ export default {
               { data: "judul", class: "py-4 text-left w-1/2 px-4" },
               { data: "nama_ketua_pengabdian", class: " p-4" },
               { data: "skim_pengabdian", class: " p-4" },
+              { data: "jurusan", class: " p-4" },
               { data: "tahun", class: "w-40 p-4" },
             ],
           });
