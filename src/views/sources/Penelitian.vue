@@ -8,6 +8,7 @@
       </div>
     </div>
     <div class="container py-4">
+      <p class="text-2xl font-semibold"> Data Penelitian Repository UP2M <br>Politeknik Negeri Jakarta</p>
       <div class="py-2 text-left">
         <div v-if="!userLogin"></div>
         <button
@@ -25,6 +26,7 @@
             <th class="text-center">Judul</th>
             <th class="text-center">Nama Ketua Penelitian</th>
             <th class="text-center">Skim Penelitian</th>
+            <th class="text-center">Jurusan</th>
             <th class="text-center">Tahun</th>
           </tr>
         </thead>
@@ -71,6 +73,7 @@ export default {
               { data: "judul", class: "py-4 text-left w-1/2 px-4" },
               { data: "nama_ketua_penelitian", class: " p-4" },
               { data: "skim_penelitian", class: " p-4" },
+              { data: "jurusan", class: " p-4" },
               { data: "tahun", class: "w-40 p-4" },
             ],
           });

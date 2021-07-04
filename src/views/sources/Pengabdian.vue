@@ -8,6 +8,7 @@
       </div>
     </div>
     <div class="container py-4">
+      <p class="text-2xl font-semibold"> Data Pengabdian Repository UP2M <br>Politeknik Negeri Jakarta</p>
       <div class="py-2 text-left">
         <div v-if="!userLogin"></div>
         <button

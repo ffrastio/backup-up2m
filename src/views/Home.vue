@@ -9,7 +9,7 @@
         <div
           class="flex flex-col w-full lg:w-1/2 justify-items-start items-start pt-12 pb-24 px-6"
         >
-          <h1 class="font-bold text-3xl my-4">Temukan Data yang Diinginkan</h1>
+          <h1 class="font-bold text-3xl my-4 ">Repository UP2M <br>Politkenik Negeri Jakarta</h1>
           <p class="leading-normal mb-4">
             UP2M Menyediakan berbagai data dan <br />
             keperluan untuk mendukung penelitian kamu
@@ -25,7 +25,7 @@
         <div class="w-full lg:w-1/2 lg:py-6 text-center">
           <!--Add your product image here-->
           <img
-            src="@/assets/content/header.png"
+            src="@/assets/content/Data.png"
             alt="Header"
             class="object-cover mx-auto img-header"
           />

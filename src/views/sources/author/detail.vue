@@ -1,9 +1,9 @@
 <template>
   <div id="authorDetail">
     <p class="text-3xl font-semibold border-b py-4">Detail Author</p>
-    <div class="container mx-auto">
+    <div class="container">
       <div class="flex items-center p-4 text-left">
-        <div class="flex w-50 h-50">
+        <div class="flex w-20 h-20">
           <img
             class="w-20 h-20 object-cover"
             alt="Foto dosen"
