@@ -95,7 +95,7 @@ export default {
             }
           });
       }
-      this.errorMsg = [];
+      this.errorMsg = ["Username atau password salah"];
       if (!this.email) {
         this.errorMsg.push("Masukkan email anda !");
       } else if (!this.validEmail(this.email)) {
