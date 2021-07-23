@@ -4,7 +4,8 @@
       <!-- START Judul Grafik -->
       <div class=" mt-2 text-md font-semibold">
         <h3 class="text-center">
-          Data Pelaksanaan Penelitian <br> Per Skim {{ year }}
+          Data Pelaksanaan Penelitian <br />
+          Per Skim {{ year }}
         </h3>
       </div>
       <!-- END Judul Grafik -->
@@ -78,6 +79,18 @@ export default {
           {
             label: this.year,
             backgroundColor: [
+              "#ffff",
+              "rgb(102,51,0)",
+              "rgb(227,218,32)",
+              "rgb(215,88,55)",
+              "rgb(0,176,80)",
+              "rgb(253,97,219)",
+              "rgb(0,0,0)",
+              "rgb(255,255,102)",
+              "rgb(248,135,58)",
+              "rgb(112,38,160)",
+            ],
+            borderColor: [
               "rgb(206,206,206)",
               "rgb(102,51,0)",
               "rgb(227,218,32)",
@@ -89,6 +102,7 @@ export default {
               "rgb(248,135,58)",
               "rgb(112,38,160)",
             ],
+            borderWidth: 2,
             data: this.penelitian,
           },
         ],

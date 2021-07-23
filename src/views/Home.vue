@@ -51,19 +51,19 @@
         </div>
       </div>
       <div
-        class="bg-gray-200 px-4 py-4 grid grid-cols-1 gap-2 md:grid-cols-2 mb-4 animate-popup"
+        class=" px-4 py-4 grid grid-cols-1 gap-2 md:grid-cols-2 mb-4 animate-popup"
       >
-        <div class="bg-white text-left">
-          <Chart1 class="bg-white rounded" id="chart1" />
+        <div class="bg-gray-100 text-left">
+          <Chart1 class="bg-gray-100 rounded" id="chart1" />
         </div>
-        <div class="bg-white text-left">
-          <Chart2 class="bg-white rounded" id="chart2" />
+        <div class="bg-gray-100 text-left">
+          <Chart2 class="bg-gray-100 rounded" id="chart2" />
         </div>
-        <div class="bg-white text-left">
-          <Chart3 class="bg-white rounded" id="chart3" />
+        <div class="bg-gray-100 text-left">
+          <Chart3 class="bg-gray-100 rounded" id="chart3" />
         </div>
-        <div class="bg-white text-left">
-          <Chart4 class="bg-white rounded" id="chart4" />
+        <div class="bg-gray-100 text-left">
+          <Chart4 class="bg-gray-100 rounded" id="chart4" />
         </div>
       </div>
     </div>
