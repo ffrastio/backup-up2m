@@ -9,7 +9,7 @@
         <div
           class="flex flex-col w-full lg:w-1/2 justify-items-start items-start pt-12 pb-24 px-6"
         >
-          <h1 class="font-bold text-3xl my-4 ">Repository UP2M <br>Politkenik Negeri Jakarta</h1>
+          <h1 class="font-bold text-3xl my-4 ">Dashboard UP2M <br>Politenik Negeri Jakarta</h1>
           <p class="leading-normal mb-4">
             UP2M Menyediakan berbagai data dan <br />
             keperluan untuk mendukung penelitian kamu
