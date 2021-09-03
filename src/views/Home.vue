@@ -11,8 +11,7 @@
         >
           <h1 class="font-bold text-3xl my-4 ">Dashboard UP2M <br>Politenik Negeri Jakarta</h1>
           <p class="leading-normal mb-4">
-            UP2M Menyediakan berbagai data dan <br />
-            keperluan untuk mendukung penelitian kamu
+            Unit Penelitian dan Pengabdian Kepada Masyarakat (UP2M) PNJ menyajikan data historis penelitian dan pengabdian kepada masyarakat civitas akademika Politeknik Negeri Jakarta
           </p>
           <router-link
             class="hijau hover:bg-primary-200 text-white hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border"

@@ -112,7 +112,7 @@
             src="@/assets/content/organisasi.png"
             alt="struktur organisasi"
             class="object-cover mx-auto"
-            style=" width: 400px;"
+            
           />
         </div>
         <div class="md:w-1/2 text-left mt-4">
